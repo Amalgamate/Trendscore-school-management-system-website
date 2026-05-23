@@ -1,0 +1,48 @@
+:root {
+  /* Color System */
+  --color-orange: #f97316;
+  --color-orange-hover: #ea580c;
+  --color-teal: #0f4c5c;
+  --color-teal-hover: #0a3541;
+  --color-teal-light: #e6f0f2;
+  --color-dark-analytics: #073b45;
+  --color-dark-analytics-light: #0d5d6c;
+  --color-green: #22c55e;
+  --color-green-light: #f0fdf4;
+  --color-bg-light: #f8fafc;
+  --color-white: #ffffff;
+  
+  /* Text Colors */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-border: #e2e8f0;
+
+  /* Typography */
+  --font-headings: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Border Radii */
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 8px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 25px rgba(249, 115, 22, 0.15);
+  --shadow-glow-teal: 0 0 25px rgba(15, 76, 92, 0.15);
+
+  /* Layout */
+  --max-width-container: 1440px;
+  --max-width-content: 1200px;
+  --section-padding: 120px;
+  --header-height: 100px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
