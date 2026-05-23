@@ -19,6 +19,9 @@ const REAL_IMAGE_MAP = {
   'finance-dashboard':             '/finance.png',
   'revenue-analytics':             '/finance.png',
   'senior-school-pathways-dashboard': '/pathways.png',
+  'assessment-dashboard':          '/marketing-teacher-cbe-assessment-v1.jpg',
+  'competency-analytics':          '/marketing-teacher-cbe-assessment-v1.jpg',
+  'report-card-preview':           '/marketing-teacher-cbe-assessment-v1.jpg',
 };
 
 const ImagePlaceholder = ({ name, type = 'dashboard', className = '', height = '320px' }) => {
