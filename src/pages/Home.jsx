@@ -314,20 +314,23 @@ const Home = () => {
                 <div className="integration-logo-text">M-Pesa</div>
               </div>
               <div className="integration-item">
-                <MessageSquare size={28} style={{ color: '#25D366' }} />
+                <MessageSquare size={28} style={{ color: '#F97316' }} />
+                <div className="integration-logo-text">SMS</div>
+              </div>
+              <div className="integration-item">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="16" fill="#25D366"/>
+                  <path d="M22.5 9.5C20.7 7.7 18.4 6.7 16 6.7c-5.2 0-9.4 4.2-9.4 9.4 0 1.7.4 3.3 1.2 4.7L6.6 25.3l4.7-1.2c1.4.7 2.9 1.1 4.5 1.1h.1c5.2 0 9.4-4.2 9.4-9.4-.1-2.5-1.1-4.8-2.8-6.3zm-6.5 14.4h-.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3c-.8-1.3-1.2-2.7-1.2-4.2 0-4.3 3.5-7.8 7.9-7.8 2.1 0 4.1.8 5.5 2.3 1.5 1.5 2.3 3.4 2.3 5.5-.1 4.3-3.6 7.9-7.7 7.9zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5-.1-.2-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/>
+                </svg>
                 <div className="integration-logo-text">WhatsApp</div>
               </div>
               <div className="integration-item">
-                <MessageSquare size={28} style={{ color: '#F97316' }} />
-                <div className="integration-logo-text">SMS Alerts</div>
+                <img src="/kcb-icon.png" alt="KCB" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
+                <div className="integration-logo-text">KCB</div>
               </div>
               <div className="integration-item">
-                <img src="/kcb-icon.png" alt="KCB Bank" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
-                <div className="integration-logo-text">KCB Bank</div>
-              </div>
-              <div className="integration-item">
-                <img src="/equity-icon.png" alt="Equity Bank" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
-                <div className="integration-logo-text">Equity Bank</div>
+                <img src="/equity-icon.png" alt="Equity" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
+                <div className="integration-logo-text">Equity</div>
               </div>
               <div className="integration-item">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -337,15 +340,6 @@ const Home = () => {
                   <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                 </svg>
                 <div className="integration-logo-text">Google</div>
-              </div>
-              <div className="integration-item">
-                <svg width="28" height="28" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0h11v11H0z" fill="#F25022"/>
-                  <path d="M12 0h11v11H12z" fill="#7FBA00"/>
-                  <path d="M0 12h11v11H0z" fill="#00A4EF"/>
-                  <path d="M12 12h11v11H12z" fill="#FFB900"/>
-                </svg>
-                <div className="integration-logo-text">Microsoft</div>
               </div>
             </div>
           </div>
