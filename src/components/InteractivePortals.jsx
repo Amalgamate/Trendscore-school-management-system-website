@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Laptop, BookOpen, Users, GraduationCap } from 'lucide-react';
-import ImagePlaceholder from './ImagePlaceholder';
 
 const InteractivePortals = () => {
   const [activePortal, setActivePortal] = useState('parent');
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
 
   const portalDetails = {
     admin: {
@@ -19,7 +19,7 @@ const InteractivePortals = () => {
         'Automated report card compilation rules'
       ],
       link: '/portals/admin',
-      mockName: 'administrator-dashboard'
+      imageSrc: '/Admin-Portal2.png'
     },
     teacher: {
       title: 'Teacher Portal & Digital Markbook',
@@ -33,7 +33,7 @@ const InteractivePortals = () => {
         'Learner performance charts'
       ],
       link: '/portals/teacher',
-      mockName: 'teacher-portal'
+      imageSrc: '/parents portal.png'
     },
     parent: {
       title: 'Parent Portal & Mobile App',
@@ -47,7 +47,7 @@ const InteractivePortals = () => {
         'Direct notices & messaging boards'
       ],
       link: '/portals/parent',
-      mockName: 'parent-portal-home'
+      imageSrc: '/parents portal 2.png'
     },
     learner: {
       title: 'Learner Portal',
@@ -61,7 +61,7 @@ const InteractivePortals = () => {
         'Senior school subject combination planners'
       ],
       link: '/portals/learner',
-      mockName: 'learner-portal-home'
+      imageSrc: '/parents portal 2.png'
     }
   };
 
@@ -98,7 +98,7 @@ const InteractivePortals = () => {
 
       {/* Portal Display Card */}
       <div className="glass-panel interactive-portals-panel">
-        <div>
+        <div className="interactive-portals-content">
           <h2>{portal.title}</h2>
           <p className="interactive-portals-subtitle">{portal.subtitle}</p>
           
@@ -113,15 +113,25 @@ const InteractivePortals = () => {
         </div>
 
         <div className="interactive-portals-footer">
-          <div>
-            <Link to={portal.link} className="btn btn-secondary interactive-portals-link-btn">
-              Explore Portal Details <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="interactive-portals-preview">
-            <ImagePlaceholder name={portal.mockName} type="dashboard" height="100%" />
-          </div>
+          <Link to={portal.link} className="btn btn-secondary interactive-portals-link-btn">
+            Explore Portal Details <ArrowRight size={14} />
+          </Link>
         </div>
+
+        <div
+          className={`interactive-portals-image-overlay portal-${activePortal}`}
+          onMouseEnter={() => setIsImageZoomed(true)}
+          onMouseLeave={() => setIsImageZoomed(false)}
+          aria-hidden="true"
+        >
+          <img src={portal.imageSrc} alt={`${portal.title} preview`} />
+        </div>
+
+        {isImageZoomed ? (
+          <div className="interactive-portals-lightbox" aria-hidden="true">
+            <img src={portal.imageSrc} alt={`${portal.title} enlarged preview`} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

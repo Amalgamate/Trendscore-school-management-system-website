@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="footer-brand">
             <Link to="/" className="logo-link" style={{ color: '#FFFFFF' }}>
-              <img src="/Footer-logo.png" alt="TrendScore logo" className="footer-logo-img" />
+              <img src="/mainlogo.png" alt="TrendScore logo" className="footer-logo-img" />
             </Link>
             <p>The Digital Operating System for Modern Schools, bringing academics, assessment, finance, operations, communication, and intelligence into one unified platform.</p>
             <div className="footer-socials">
