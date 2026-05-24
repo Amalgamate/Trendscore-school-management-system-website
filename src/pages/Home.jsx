@@ -4,14 +4,17 @@ import { motion } from 'framer-motion';
 import { 
   ArrowRight, ShieldCheck, CheckCircle2, Coins, GraduationCap, 
   Users, MessageSquare, BarChart3, HelpCircle, Activity, Play, 
-  Plus, Check, Sparkles, Smartphone, Landmark, CheckSquare, BookOpen
+  Plus, Check, Smartphone, Landmark, CheckSquare
 } from 'lucide-react';
 import ImagePlaceholder from '../components/ImagePlaceholder';
 import InteractiveDashboard from '../components/InteractiveDashboard';
 import InteractivePortals from '../components/InteractivePortals';
 import ComparisonTable from '../components/ComparisonTable';
+import CBECompetencyCard from '../components/CBECompetencyCard';
+import SeniorSchoolPathways from '../components/SeniorSchoolPathways';
 
 const Home = () => {
+
   // Animation presets
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -54,6 +57,27 @@ const Home = () => {
     { name: 'Starehe Boys\' Centre', logo: 'SBC' }
   ];
 
+  const testimonials = [
+    {
+      quote: 'Our previous system was not ready for CBE. Teachers spent hours grading portfolios. With TrendScore, assessment levels are logged in seconds, and our term report compilers run automatically.',
+      initials: 'JK',
+      name: 'John Kipkemboi',
+      role: 'Principal, Rift Valley Academy',
+    },
+    {
+      quote: 'Fee reconciliation used to take our finance team two weeks at start of term. With M-Pesa automated ledgers, parents pay and receive receipts immediately. Our collection rate jumped by 24%.',
+      initials: 'AW',
+      name: 'Alice Wambui',
+      role: 'Director, Sunshine School Nairobi',
+    },
+    {
+      quote: 'The parent portal has transformed parent-school collaboration. Parents track attendance warnings and results directly on mobile, reducing customer support queries in our offices.',
+      initials: 'SO',
+      name: 'Sister Olivia',
+      role: "Headmistress, St. Mary's Girls Primary",
+    },
+  ];
+
   return (
     <div className="home-wrapper">
       {/* 2. Hero Section */}
@@ -65,8 +89,8 @@ const Home = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="badge badge-orange">
-              <Sparkles size={14} style={{ marginRight: '6px' }} /> CBE-Ready & M-Pesa Integrated
+            <span className="badge badge-orange hero-top-label">
+              CBE-Ready & M-Pesa Integrated
             </span>
             <h1 className="hero-title">
               Run Your Entire School on <span>One Smart System</span>
@@ -139,36 +163,16 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="trusted-section" style={{ padding: '50px 0', overflow: 'hidden' }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <div className="trusted-title">Trusted by Leading & Local Schools Across Kenya</div>
-        </div>
-        <div className="trusted-marquee-wrapper">
-          {/* Row 1: Scrolling Left */}
-          <div className="trusted-marquee-track">
-            <div className="marquee-content-left">
-              {[...row1Schools, ...row1Schools, ...row1Schools].map((school, i) => (
-                <div key={i} className="school-marquee-item">
-                  <div className="school-logo-badge">
-                    {school.logo}
-                  </div>
-                  <span>{school.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2: Scrolling Right */}
-          <div className="trusted-marquee-track">
-            <div className="marquee-content-right">
-              {[...row2Schools, ...row2Schools, ...row2Schools].map((school, i) => (
-                <div key={i} className="school-marquee-item">
-                  <div className="school-logo-badge">
-                    {school.logo}
-                  </div>
-                  <span>{school.name}</span>
-                </div>
-              ))}
+      {/* 3. Full Width Platform Statement */}
+      <section className="platform-hero-section">
+        <div className="platform-hero-overlay">
+          <div className="container">
+            <div className="platform-hero-content">
+              <h2>Make Decisions With <span>Confidence</span></h2>
+              <p>
+                TrendScore gives school leaders a real-time view of academics, finance, attendance,
+                and learner growth all in one place.
+              </p>
             </div>
           </div>
         </div>
@@ -179,7 +183,7 @@ const Home = () => {
         <div className="container">
           <div className="section-header">
             <span className="badge badge-teal">The Challenges</span>
-            <h2>Why Traditional School Software Fails</h2>
+            <h2>Where Your Traditional School Software Fails.</h2>
             <p>Traditional tools were built as simple databases, failing to solve the complex needs of modern Competency-Based Education (CBE) and finance control.</p>
           </div>
 
@@ -211,50 +215,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 6. Core Modules (Everything You Can Manage) */}
-      <section className="section" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="container">
-          <div className="section-header">
-            <span className="badge badge-orange">Platform Modules</span>
-            <h2>One Login. Total Institutional Control.</h2>
-            <p>Unify academic monitoring, CBE analytics, payroll HR, accounting, and parent notifications under a single cloud database.</p>
-          </div>
-
-          <div className="modules-grid">
-            {[
-              { title: 'Academics', desc: 'Classes, subjects, timetables, and unified learner dossiers.', icon: <BookOpen size={20} />, link: '/features/academics' },
-              { title: 'CBE Assessment', desc: 'Custom rubrics, competencies, progress journals.', icon: <GraduationCap size={20} />, link: '/features/assessment' },
-              { title: 'Fees & Billing', desc: 'Invoices, receipts, M-Pesa reconciliations.', icon: <Coins size={20} />, link: '/features/finance' },
-              { title: 'Accounting & Finance', desc: 'Complete general ledger, statements, and expense control.', icon: <Landmark size={20} />, link: '/features/finance' },
-              { title: 'HR & Staff', desc: 'Records, payroll, leave requests, performance metrics.', icon: <Users size={20} />, link: '/features/hr' },
-              { title: 'Admissions', desc: 'Onboarding workflows and registration logs.', icon: <CheckSquare size={20} />, link: '/features/admissions' },
-              { title: 'Parent Comms', desc: 'WhatsApp notifications, transactional SMS, portals.', icon: <MessageSquare size={20} />, link: '/features/communication' },
-              { title: 'Reports & Analytics', desc: 'Live BI command centers and charts for leadership.', icon: <BarChart3 size={20} />, link: '/features/analytics' },
-            ].map((mod, idx) => (
-              <motion.div 
-                key={idx} 
-                className="module-card"
-                variants={cardHover}
-                whileHover="whileHover"
-              >
-                <div className="module-icon">{mod.icon}</div>
-                <h3>{mod.title}</h3>
-                <p style={{ marginBottom: '16px' }}>{mod.desc}</p>
-                <Link to={mod.link} style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-orange)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  Learn More &rarr;
-                </Link>
-              </motion.div>
-            ))}
+      {/* 7. Built For CBE (Formative & Summative) */}
+      <section className="cbe-section" id="tour">
+        {/* Right column: background image filling half the viewport */}
+        <div className="cbe-visual-col">
+          <div
+            className="cbe-img-bg"
+            style={{
+              backgroundImage: 'url(/marketing-teacher-cbe-assessment-v1.jpg)',
+            }}
+          />
+          <div className="cbe-card-overlay">
+            <CBECompetencyCard />
           </div>
         </div>
-      </section>
 
-      {/* 7. Built For CBE (Formative & Summative) */}
-      <section className="section" id="tour">
-        <div className="container cbe-grid">
-          <motion.div {...fadeUp}>
+        <div className="container">
+          <motion.div className="cbe-text-col" {...fadeUp}>
             <span className="badge badge-teal">Competency-Based Education</span>
-            <h2>Built Specifically for Kenya\'s CBE Curriculum</h2>
+            <h2>Built Specifically for the CBE Curriculum</h2>
             <p style={{ marginBottom: '24px' }}>
               Unlike Western ERPs repurposed with custom fields, TrendScore was engineered from the ground up for CBE. Track learner growth across all dimensions of formative and summative metrics.
             </p>
@@ -283,82 +262,18 @@ const Home = () => {
               </div>
             </div>
           </motion.div>
-
-          <div>
-            <ImagePlaceholder name="assessment-dashboard" type="dashboard" height="340px" />
-          </div>
         </div>
       </section>
 
-      {/* 8. Senior School Pathways */}
-      <section className="section" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="container">
-          <div className="section-header">
-            <span className="badge badge-orange">Senior School</span>
-            <h2>Validate Pathways & Subject Combos Automatically</h2>
-            <p>Ensure senior school learners select combinations aligned with career requirements and institutional resources.</p>
-          </div>
-
-          <div className="pathway-cards-row">
-            <div className="pathway-card">
-              <div className="pathway-image-placeholder">
-                <GraduationCap size={40} style={{ color: 'var(--color-teal)', opacity: 0.5 }} />
-              </div>
-              <div className="pathway-details">
-                <h3>STEM Pathway</h3>
-                <p>Verify configurations for Physics, Chemistry, Biology, and advanced mathematics tracks.</p>
-                <div className="pathway-subject-tags">
-                  <span className="pathway-tag">Mathematics</span>
-                  <span className="pathway-tag">Physics</span>
-                  <span className="pathway-tag">Chemistry</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pathway-card">
-              <div className="pathway-image-placeholder">
-                <Users size={40} style={{ color: 'var(--color-teal)', opacity: 0.5 }} />
-              </div>
-              <div className="pathway-details">
-                <h3>Social Sciences Pathway</h3>
-                <p>Support combinations including History, Geography, Religious Education, and Languages.</p>
-                <div className="pathway-subject-tags">
-                  <span className="pathway-tag">History</span>
-                  <span className="pathway-tag">Geography</span>
-                  <span className="pathway-tag">Literature</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pathway-card">
-              <div className="pathway-image-placeholder">
-                <Activity size={40} style={{ color: 'var(--color-teal)', opacity: 0.5 }} />
-              </div>
-              <div className="pathway-details">
-                <h3>Arts & Sports Science</h3>
-                <p>Track progress for music, visual arts, theatre, and physical education portfolios.</p>
-                <div className="pathway-subject-tags">
-                  <span className="pathway-tag">Fine Arts</span>
-                  <span className="pathway-tag">Music</span>
-                  <span className="pathway-tag">Physical Ed.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <ImagePlaceholder name="senior-school-pathways-dashboard" type="dashboard" height="280px" />
-          </div>
-        </div>
-      </section>
-
+      {/* 8. Senior School Pathways (New Interactive Redesign) */}
+      <SeniorSchoolPathways />
       {/* 9. Connected Portals */}
       <section className="section">
         <div className="container">
           <div className="section-header">
             <span className="badge badge-teal">Portals</span>
-            <h2>Dedicated Interfaces for the Entire School Community</h2>
-            <p>TrendScore provides secure logins tailored to the distinct needs of parents, learners, teachers, and administrators.</p>
+            <h2>Teachers, Learners, and Parents in One Platform.</h2>
+            <p>Simple, secure portals for every part of your school community.</p>
           </div>
           <InteractivePortals />
         </div>
@@ -446,44 +361,55 @@ const Home = () => {
             <p>Read how principals and administrators achieved financial transparency and simplified grading using TrendScore.</p>
           </div>
 
-          <div className="testimonials-row">
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Our previous system was not ready for CBE. Teachers spent hours grading portfolios. With TrendScore, assessment levels are logged in seconds, and our term report compilers run automatically."
-              </p>
-              <div className="testimonial-user">
-                <div className="testimonial-avatar">JK</div>
-                <div className="testimonial-meta">
-                  <h4>John Kipkemboi</h4>
-                  <p>Principal, Rift Valley Academy</p>
+          <div className="testimonials-carousel">
+            <div className="testimonials-row">
+              {testimonials.map((item) => (
+                <div className="testimonial-card" key={item.name}>
+                  <p className="testimonial-text">"{item.quote}"</p>
+                  <div className="testimonial-user">
+                    <div className="testimonial-avatar">{item.initials}</div>
+                    <div className="testimonial-meta">
+                      <h4>{item.name}</h4>
+                      <p>{item.role}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Fee reconciliation used to take our finance team two weeks at start of term. With M-Pesa automated ledgers, parents pay and receive receipts immediately. Our collection rate jumped by 24%."
-              </p>
-              <div className="testimonial-user">
-                <div className="testimonial-avatar">AW</div>
-                <div className="testimonial-meta">
-                  <h4>Alice Wambui</h4>
-                  <p>Director, Sunshine School Nairobi</p>
+      <section className="trusted-section" style={{ padding: '50px 0', overflow: 'hidden' }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <div className="trusted-title">Trusted by Leading & Local Schools Across Kenya</div>
+        </div>
+        <div className="trusted-marquee-wrapper">
+          {/* Row 1: Scrolling Left */}
+          <div className="trusted-marquee-track">
+            <div className="marquee-content-left">
+              {[...row1Schools, ...row1Schools, ...row1Schools].map((school, i) => (
+                <div key={i} className="school-marquee-item">
+                  <div className="school-logo-badge">
+                    {school.logo}
+                  </div>
+                  <span>{school.name}</span>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
 
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "The parent portal has transformed parent-school collaboration. Parents track attendance warnings and results directly on mobile, reducing customer support queries in our offices."
-              </p>
-              <div className="testimonial-user">
-                <div className="testimonial-avatar">SO</div>
-                <div className="testimonial-meta">
-                  <h4>Sister Olivia</h4>
-                  <p>Headmistress, St. Mary\'s Girls Primary</p>
+          {/* Row 2: Scrolling Right */}
+          <div className="trusted-marquee-track">
+            <div className="marquee-content-right">
+              {[...row2Schools, ...row2Schools, ...row2Schools].map((school, i) => (
+                <div key={i} className="school-marquee-item">
+                  <div className="school-logo-badge">
+                    {school.logo}
+                  </div>
+                  <span>{school.name}</span>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Shield, Laptop, BookOpen, Users, GraduationCap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Laptop, BookOpen, Users, GraduationCap } from 'lucide-react';
 import ImagePlaceholder from './ImagePlaceholder';
 
 const InteractivePortals = () => {
@@ -68,84 +68,57 @@ const InteractivePortals = () => {
   const portal = portalDetails[activePortal];
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', alignItems: 'center', marginTop: '32px' }}>
+    <div className="interactive-portals-wrap">
       {/* Switch selectors */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div className="interactive-portals-tabs" role="tablist" aria-label="Portal types">
         {Object.entries(portalDetails).map(([key, item]) => {
           const isSelected = activePortal === key;
           return (
-            <div 
+            <button
+              type="button"
               key={key}
               onClick={() => setActivePortal(key)}
-              style={{
-                padding: '20px 24px',
-                borderRadius: '16px',
-                border: '1px solid',
-                borderColor: isSelected ? 'var(--color-orange)' : 'var(--color-border)',
-                background: isSelected ? 'var(--color-white)' : 'transparent',
-                boxShadow: isSelected ? 'var(--shadow-md)' : 'none',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                gap: '16px',
-                alignItems: 'flex-start'
-              }}
+              className={`interactive-portals-tab ${isSelected ? 'is-active' : ''}`}
+              aria-selected={isSelected}
+              role="tab"
             >
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '8px',
-                backgroundColor: isSelected ? 'rgba(249, 115, 22, 0.1)' : 'var(--color-teal-light)',
-                color: isSelected ? 'var(--color-orange)' : 'var(--color-teal)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                alignSelf: 'center'
-              }}>
-                <div style={{ margin: '0 auto', display: 'flex' }}>
-                  {item.icon}
-                </div>
+              <div className="interactive-portals-tab-icon">
+                {item.icon}
               </div>
-              <div>
-                <h3 style={{ 
-                  fontSize: '1.1rem', 
-                  color: isSelected ? 'var(--color-orange)' : 'var(--color-teal)', 
-                  fontWeight: 700,
-                  marginBottom: '4px'
-                }}>
+              <div className="interactive-portals-tab-text">
+                <h3>
                   {key.charAt(0).toUpperCase() + key.slice(1)} Portal
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)' }}>{item.subtitle}</p>
+                <p>{item.subtitle}</p>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
 
       {/* Portal Display Card */}
-      <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '24px', minHeight: '440px', justifyContent: 'space-between' }}>
+      <div className="glass-panel interactive-portals-panel">
         <div>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '8px', color: 'var(--color-teal)' }}>{portal.title}</h2>
-          <p style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', marginBottom: '24px' }}>{portal.subtitle}</p>
+          <h2>{portal.title}</h2>
+          <p className="interactive-portals-subtitle">{portal.subtitle}</p>
           
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <ul className="interactive-portals-features">
             {portal.features.map((f, i) => (
-              <li key={i} style={{ display: 'flex', gap: '12px', fontSize: '0.9rem', color: 'var(--color-text-primary)', alignItems: 'center' }}>
-                <CheckCircle2 size={16} style={{ color: 'var(--color-green)', flexShrink: 0 }} />
+              <li key={i}>
+                <CheckCircle2 size={16} />
                 <span>{f}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '20px', alignItems: 'center', borderTop: '1px solid var(--color-border)', paddingTop: '20px' }}>
+        <div className="interactive-portals-footer">
           <div>
-            <Link to={portal.link} className="btn btn-secondary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
+            <Link to={portal.link} className="btn btn-secondary interactive-portals-link-btn">
               Explore Portal Details <ArrowRight size={14} />
             </Link>
           </div>
-          <div style={{ height: '140px', overflow: 'hidden', borderRadius: '8px' }}>
+          <div className="interactive-portals-preview">
             <ImagePlaceholder name={portal.mockName} type="dashboard" height="100%" />
           </div>
         </div>

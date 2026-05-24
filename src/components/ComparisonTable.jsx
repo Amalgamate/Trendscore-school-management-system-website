@@ -36,43 +36,43 @@ const ComparisonTable = () => {
   };
 
   return (
-    <div style={{ overflowX: 'auto', border: '1px solid var(--color-border)', borderRadius: '18px', backgroundColor: 'var(--color-white)', boxShadow: 'var(--shadow-md)', marginTop: '24px' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '800px' }}>
+    <div className="comparison-table-wrap">
+      <table className="comparison-table-main">
         <thead>
-          <tr style={{ background: 'var(--color-teal)', color: '#FFFFFF' }}>
-            <th style={{ padding: '20px 24px', fontWeight: 600, fontSize: '1rem', width: '280px' }}>Capabilities</th>
-            <th style={{ padding: '20px 24px', fontWeight: 700, fontSize: '1.05rem', background: 'rgba(255,255,255,0.1)', borderLeft: '1px solid rgba(255,255,255,0.15)', borderRight: '1px solid rgba(255,255,255,0.15)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <tr className="comparison-table-head-row">
+            <th className="comparison-table-cap-head">Capabilities</th>
+            <th className="comparison-table-trendscore-head">
+              <div className="comparison-table-head-brand">
                 <Zap size={16} fill="#F97316" color="#F97316" /> TrendScore ERP
               </div>
             </th>
-            <th style={{ padding: '20px 24px', fontWeight: 500, fontSize: '0.9rem' }}>Legacy Systems</th>
-            <th style={{ padding: '20px 24px', fontWeight: 500, fontSize: '0.9rem' }}>Spreadsheet Files</th>
-            <th style={{ padding: '20px 24px', fontWeight: 500, fontSize: '0.9rem' }}>Disconnected Apps</th>
+            <th className="comparison-table-extra-col">Legacy Systems</th>
+            <th className="comparison-table-extra-col">Spreadsheet Files</th>
+            <th className="comparison-table-extra-col">Disconnected Apps</th>
           </tr>
         </thead>
         <tbody>
           {criteria.map((item, idx) => (
-            <tr key={idx} style={{ borderBottom: idx === criteria.length - 1 ? 'none' : '1px solid var(--color-border)', backgroundColor: idx % 2 === 0 ? 'var(--color-bg-light)' : 'var(--color-white)' }}>
-              <td style={{ padding: '18px 24px', fontWeight: 600, color: 'var(--color-teal)', fontSize: '0.9rem' }}>{item.name}</td>
+            <tr key={idx} className={`comparison-table-row ${idx % 2 === 0 ? 'is-even' : 'is-odd'} ${idx === criteria.length - 1 ? 'is-last' : ''}`}>
+              <td className="comparison-table-cap-cell">{item.name}</td>
               
               {/* TrendScore Column */}
-              <td style={{ padding: '18px 24px', background: idx % 2 === 0 ? 'rgba(249,115,22,0.02)' : 'rgba(249,115,22,0.04)', borderLeft: '1px solid rgba(249,115,22,0.1)', borderRight: '1px solid rgba(249,115,22,0.1)', textAlign: 'center', verticalAlign: 'middle' }}>
+              <td className={`comparison-table-trendscore-cell ${idx % 2 === 0 ? 'is-even' : 'is-odd'}`}>
                 {renderIcon(item.trendscore)}
               </td>
               
               {/* Legacy Column */}
-              <td style={{ padding: '18px 24px', textAlign: 'center', verticalAlign: 'middle' }}>
+              <td className="comparison-table-extra-col">
                 {renderIcon(item.legacy)}
               </td>
               
               {/* Spreadsheet Column */}
-              <td style={{ padding: '18px 24px', textAlign: 'center', verticalAlign: 'middle' }}>
+              <td className="comparison-table-extra-col">
                 {renderIcon(item.spreadsheets)}
               </td>
               
               {/* Multiple systems Column */}
-              <td style={{ padding: '18px 24px', textAlign: 'center', verticalAlign: 'middle' }}>
+              <td className="comparison-table-extra-col">
                 {renderIcon(item.multiple)}
               </td>
             </tr>

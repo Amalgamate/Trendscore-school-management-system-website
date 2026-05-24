@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area
+  LineChart, Line, AreaChart, Area
 } from 'recharts';
-import { Coins, GraduationCap, Calendar, Users, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Coins, GraduationCap, Calendar, AlertTriangle } from 'lucide-react';
 
 const InteractiveDashboard = () => {
   const [activeTab, setActiveTab] = useState('finance');
@@ -37,11 +37,14 @@ const InteractiveDashboard = () => {
   ];
 
   const renderChart = () => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const chartMargin = isMobile ? { top: 10, right: 8, left: 0, bottom: 2 } : { top: 20, right: 30, left: 20, bottom: 5 };
+
     switch (activeTab) {
       case 'finance':
         return (
           <ResponsiveContainer width="100%" height={320}>
-            <AreaChart data={revenueData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <AreaChart data={revenueData} margin={chartMargin}>
               <defs>
                 <linearGradient id="colorCollections" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#22C55E" stopOpacity={0.2}/>
@@ -53,10 +56,10 @@ const InteractiveDashboard = () => {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-              <XAxis dataKey="month" stroke="#64748B" />
-              <YAxis stroke="#64748B" tickFormatter={(v) => `KSh ${v/1000}k`} />
+              <XAxis dataKey="month" stroke="#64748B" tick={{ fontSize: isMobile ? 10 : 12 }} />
+              <YAxis hide={isMobile} stroke="#64748B" tickFormatter={(v) => `KSh ${v/1000}k`} />
               <Tooltip formatter={(value) => `KSh ${value.toLocaleString()}`} contentStyle={{ borderRadius: '8px', border: '1px solid #E2E8F0' }} />
-              <Legend />
+              {!isMobile && <Legend />}
               <Area type="monotone" dataKey="Collections (KES)" stroke="#22C55E" fillOpacity={1} fill="url(#colorCollections)" strokeWidth={3} />
               <Area type="monotone" dataKey="Invoiced (KES)" stroke="#0F4C5C" fillOpacity={1} fill="url(#colorInvoiced)" strokeWidth={2} />
             </AreaChart>
@@ -65,12 +68,12 @@ const InteractiveDashboard = () => {
       case 'academics':
         return (
           <ResponsiveContainer width="100%" height={320}>
-            <BarChart data={academicData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <BarChart data={academicData} margin={chartMargin}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-              <XAxis dataKey="grade" stroke="#64748B" />
-              <YAxis stroke="#64748B" unit="%" />
+              <XAxis dataKey="grade" stroke="#64748B" tick={{ fontSize: isMobile ? 10 : 12 }} />
+              <YAxis hide={isMobile} stroke="#64748B" unit="%" />
               <Tooltip formatter={(v) => `${v}%`} contentStyle={{ borderRadius: '8px', border: '1px solid #E2E8F0' }} />
-              <Legend />
+              {!isMobile && <Legend />}
               <Bar dataKey="Exceeding (EE)" fill="#22C55E" stackId="a" />
               <Bar dataKey="Meeting (ME)" fill="#0F4C5C" stackId="a" />
               <Bar dataKey="Approaching (AE)" fill="#F97316" stackId="a" />
@@ -81,12 +84,12 @@ const InteractiveDashboard = () => {
       case 'attendance':
         return (
           <ResponsiveContainer width="100%" height={320}>
-            <LineChart data={attendanceData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <LineChart data={attendanceData} margin={chartMargin}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-              <XAxis dataKey="week" stroke="#64748B" />
-              <YAxis stroke="#64748B" domain={[90, 100]} unit="%" />
+              <XAxis dataKey="week" stroke="#64748B" tick={{ fontSize: isMobile ? 10 : 12 }} />
+              <YAxis hide={isMobile} stroke="#64748B" domain={[90, 100]} unit="%" />
               <Tooltip formatter={(v) => `${v}%`} contentStyle={{ borderRadius: '8px', border: '1px solid #E2E8F0' }} />
-              <Legend />
+              {!isMobile && <Legend />}
               <Line type="monotone" dataKey="Grade 1-3" stroke="#F97316" strokeWidth={3} activeDot={{ r: 8 }} />
               <Line type="monotone" dataKey="Grade 4-6" stroke="#0F4C5C" strokeWidth={3} />
               <Line type="monotone" dataKey="Junior Sec" stroke="#22C55E" strokeWidth={2} strokeDasharray="5 5" />
@@ -99,40 +102,31 @@ const InteractiveDashboard = () => {
   };
 
   return (
-    <div className="glass-panel-dark" style={{ width: '100%', padding: '32px', color: '#FFFFFF', borderRadius: '24px' }}>
+    <div className="glass-panel-dark interactive-dashboard-panel">
       {/* Title block */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px', marginBottom: '32px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '20px' }}>
+      <div className="interactive-dashboard-head">
         <div>
           <span className="badge badge-orange">Analytics Command Center</span>
-          <h2 style={{ color: '#FFFFFF', fontSize: '1.8rem', marginTop: '8px' }}>Real-Time School Performance KPIs</h2>
+          <h2>Real-Time School Performance KPIs</h2>
         </div>
 
         {/* Tab triggers */}
-        <div style={{ display: 'flex', gap: '8px', background: 'rgba(255,255,255,0.05)', padding: '6px', borderRadius: '12px' }}>
+        <div className="interactive-dashboard-tabs" role="tablist" aria-label="Analytics views">
           <button 
             onClick={() => setActiveTab('finance')}
-            style={{ 
-              backgroundColor: activeTab === 'finance' ? '#F97316' : 'transparent',
-              border: 'none', color: '#FFFFFF', padding: '8px 16px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem'
-            }}
+            className={`interactive-dashboard-tab ${activeTab === 'finance' ? 'is-active' : ''}`}
           >
             <Coins size={16} /> Finance
           </button>
           <button 
             onClick={() => setActiveTab('academics')}
-            style={{ 
-              backgroundColor: activeTab === 'academics' ? '#F97316' : 'transparent',
-              border: 'none', color: '#FFFFFF', padding: '8px 16px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem'
-            }}
+            className={`interactive-dashboard-tab ${activeTab === 'academics' ? 'is-active' : ''}`}
           >
             <GraduationCap size={16} /> CBE Academics
           </button>
           <button 
             onClick={() => setActiveTab('attendance')}
-            style={{ 
-              backgroundColor: activeTab === 'attendance' ? '#F97316' : 'transparent',
-              border: 'none', color: '#FFFFFF', padding: '8px 16px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem'
-            }}
+            className={`interactive-dashboard-tab ${activeTab === 'attendance' ? 'is-active' : ''}`}
           >
             <Calendar size={16} /> Attendance
           </button>
@@ -140,37 +134,37 @@ const InteractiveDashboard = () => {
       </div>
 
       {/* Analytics KPI Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '32px' }}>
-        <div style={{ background: 'rgba(255,255,255,0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem' }}>TOTAL LEARNERS</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            4,352 <span style={{ color: '#22C55E', fontSize: '0.75rem', fontWeight: 600 }}>&uarr; 12%</span>
+      <div className="interactive-dashboard-kpis">
+        <div className="interactive-dashboard-kpi">
+          <div className="interactive-dashboard-kpi-label">TOTAL LEARNERS</div>
+          <div className="interactive-dashboard-kpi-value">
+            1,230 <span>&uarr; 12%</span>
           </div>
         </div>
-        <div style={{ background: 'rgba(255,255,255,0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem' }}>COLLECTION RATE</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            88.2% <span style={{ color: '#22C55E', fontSize: '0.75rem', fontWeight: 600 }}>&uarr; 4.1%</span>
+        <div className="interactive-dashboard-kpi">
+          <div className="interactive-dashboard-kpi-label">COLLECTION RATE</div>
+          <div className="interactive-dashboard-kpi-value">
+            88.2% <span>&uarr; 4.1%</span>
           </div>
         </div>
-        <div style={{ background: 'rgba(255,255,255,0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem' }}>AVERAGE ATTENDANCE</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            96.4% <span style={{ color: '#22C55E', fontSize: '0.75rem', fontWeight: 600 }}>Stable</span>
+        <div className="interactive-dashboard-kpi">
+          <div className="interactive-dashboard-kpi-label">AVERAGE ATTENDANCE</div>
+          <div className="interactive-dashboard-kpi-value">
+            96.4% <span>Stable</span>
           </div>
         </div>
-        <div style={{ background: 'rgba(255,255,255,0.04)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)', borderLeft: '3px solid #EF4444' }}>
-          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <AlertTriangle size={12} color="#EF4444" /> SYSTEM ALERTS
+        <div className="interactive-dashboard-kpi interactive-dashboard-kpi-alert">
+          <div className="interactive-dashboard-kpi-label interactive-dashboard-alert-label">
+            <AlertTriangle size={12} /> SYSTEM ALERTS
           </div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, marginTop: '4px', color: '#EF4444' }}>
+          <div className="interactive-dashboard-alert-value">
             3 Active
           </div>
         </div>
       </div>
 
       {/* Main Chart viewport */}
-      <div style={{ background: 'rgba(7, 59, 69, 0.4)', padding: '24px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="interactive-dashboard-chart">
         {renderChart()}
       </div>
     </div>

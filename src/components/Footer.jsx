@@ -10,12 +10,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="footer-brand">
             <Link to="/" className="logo-link" style={{ color: '#FFFFFF' }}>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="32" height="32" rx="8" fill="#FFFFFF"/>
-                <path d="M12 19L16 11L20 19" stroke="#F97316" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="16" cy="11" r="2" fill="#F97316"/>
-              </svg>
-              <span className="logo-text" style={{ color: '#FFFFFF' }}>Trend<span style={{ color: '#F97316' }}>Score</span></span>
+              <img src="/Footer-logo.png" alt="TrendScore logo" className="footer-logo-img" />
             </Link>
             <p>The Digital Operating System for Modern Schools, bringing academics, assessment, finance, operations, communication, and intelligence into one unified platform.</p>
             <div className="footer-socials">

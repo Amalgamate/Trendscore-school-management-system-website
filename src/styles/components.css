@@ -180,6 +180,12 @@
 }
 
 @media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  .logo-img {
+    height: 64px;
+  }
   .nav-menu, .nav-actions {
     display: none;
   }
@@ -264,6 +270,13 @@
   margin-bottom: 24px;
   max-width: 320px;
   font-size: 0.9rem;
+}
+
+.footer-logo-img {
+  height: 144px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-socials {
@@ -354,6 +367,10 @@
 @media (max-width: 480px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-logo-img {
+    height: 120px;
   }
 }
 

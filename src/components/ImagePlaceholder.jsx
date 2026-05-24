@@ -440,16 +440,32 @@ const ImagePlaceholder = ({ name, type = 'dashboard', className = '', height = '
 
   // If a real image is mapped and hasn't errored, show it
   if (srcPath && !imageError) {
+    const isHeroMainImage = name === 'hero-main';
     return (
       <div
         className={`img-placeholder-container ${type === 'dark' ? 'img-placeholder-dark' : ''} ${className}`}
-        style={{ height, padding: 0, overflow: 'hidden', background: 'transparent', border: 'none', boxShadow: 'var(--shadow-xl)', borderRadius: 'var(--radius-md)' }}
+        style={{
+          height,
+          padding: 0,
+          overflow: 'hidden',
+          background: 'transparent',
+          border: 'none',
+          boxShadow: isHeroMainImage ? 'none' : 'var(--shadow-xl)',
+          borderRadius: isHeroMainImage ? '0' : 'var(--radius-md)'
+        }}
       >
         <img
           src={srcPath}
           alt={name ? name.replace(/-/g, ' ') : 'TrendScore dashboard'}
           onError={() => setImageError(true)}
-          style={{ width: '100%', height: '100%', objectFit: name === 'hero-main' ? 'contain' : 'cover', objectPosition: 'top', display: 'block', borderRadius: 'var(--radius-md)' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: isHeroMainImage ? 'contain' : 'cover',
+            objectPosition: 'top',
+            display: 'block',
+            borderRadius: isHeroMainImage ? '0' : 'var(--radius-md)'
+          }}
         />
       </div>
     );
