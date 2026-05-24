@@ -310,7 +310,7 @@ const Home = () => {
           <div className="integrations-box">
             <div className="integrations-grid">
               <div className="integration-item">
-                <Coins size={28} style={{ color: '#22C55E' }} />
+                <img src="/mpesa-icon.png" alt="M-Pesa" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
                 <div className="integration-logo-text">M-Pesa</div>
               </div>
               <div className="integration-item">
