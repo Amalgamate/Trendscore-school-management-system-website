@@ -322,11 +322,11 @@ const Home = () => {
                 <div className="integration-logo-text">SMS Alerts</div>
               </div>
               <div className="integration-item">
-                <Landmark size={28} style={{ color: '#0F4C5C' }} />
+                <img src="/kcb-icon.png" alt="KCB Bank" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
                 <div className="integration-logo-text">KCB Bank</div>
               </div>
               <div className="integration-item">
-                <Landmark size={28} style={{ color: '#0F4C5C' }} />
+                <img src="/equity-icon.png" alt="Equity Bank" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
                 <div className="integration-logo-text">Equity Bank</div>
               </div>
               <div className="integration-item">
