@@ -54,20 +54,13 @@ const Header = () => {
               <Link to="/" className="nav-link">Home</Link>
             </li>
 
-            {/* Modules Mega Menu */}
+            {/* Assessment Menu */}
             <li className="nav-item">
               <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Modules <ChevronDown size={14} />
+                Assessment <ChevronDown size={14} />
               </a>
-              <div className="mega-menu mega-menu-wide">
-                <div className="mega-menu-title">TrendScore Modules</div>
-                <Link to="/features/academics" className="mega-menu-link">
-                  <BookOpen className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Academics</h4>
-                    <p>Classes, subjects, timetables, and learner records.</p>
-                  </div>
-                </Link>
+              <div className="mega-menu">
+                <div className="mega-menu-title">Assessment & Performance</div>
                 <Link to="/features/assessment" className="mega-menu-link">
                   <GraduationCap className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
@@ -75,46 +68,56 @@ const Header = () => {
                     <p>Rubrics, competencies, assessment reports.</p>
                   </div>
                 </Link>
-                <Link to="/features/finance" className="mega-menu-link">
-                  <Coins className="mega-menu-icon" size={18} />
+                <Link to="/features/academics" className="mega-menu-link">
+                  <BookOpen className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
-                    <h4>Finance & Billing</h4>
-                    <p>Invoices, receipts, M-Pesa automated balances.</p>
-                  </div>
-                </Link>
-                <Link to="/features/hr" className="mega-menu-link">
-                  <Users className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>HR & Staff</h4>
-                    <p>Staff details, payroll, leaves, appraisals.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/admissions" className="mega-menu-link">
-                  <ClipboardCheck className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Admissions</h4>
-                    <p>Onboarding workflows and registration logs.</p>
-                  </div>
-                </Link>
-                <Link to="/features/communication" className="mega-menu-link">
-                  <MessageSquare className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Communication</h4>
-                    <p>WhatsApp alerts, SMS notifications, and emails.</p>
+                    <h4>Academics</h4>
+                    <p>Classes, subjects, term setup, and learner records.</p>
                   </div>
                 </Link>
                 <Link to="/features/analytics" className="mega-menu-link">
                   <BarChart3 className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Reports & Analytics</h4>
-                    <p>Executive dashboards for finance and performance KPIs.</p>
+                    <p>Dashboards for academic and performance KPIs.</p>
                   </div>
                 </Link>
-                <Link to="/modules/attendance" className="mega-menu-link">
-                  <Calendar className="mega-menu-icon" size={18} />
+                <Link to="/solutions/primary" className="mega-menu-link">
+                  <GraduationCap className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
-                    <h4>Attendance</h4>
-                    <p>Real-time attendance logs and patterns.</p>
+                    <h4>Primary CBE</h4>
+                    <p>Early-year reports and competency growth tracking.</p>
+                  </div>
+                </Link>
+                <Link to="/solutions/junior" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
+                  <GraduationCap className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Junior School Assessment</h4>
+                    <p>SBAs, projects, practicals, and CAT scoring.</p>
+                  </div>
+                </Link>
+              </div>
+            </li>
+
+            {/* ELearning Menu */}
+            <li className="nav-item">
+              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
+                ELearning <ChevronDown size={14} />
+              </a>
+              <div className="mega-menu">
+                <div className="mega-menu-title">Digital Learning</div>
+                <Link to="/portals/learner" className="mega-menu-link">
+                  <BookOpen className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Learner Portal</h4>
+                    <p>Assignments, progress, results, and notices.</p>
+                  </div>
+                </Link>
+                <Link to="/portals/teacher" className="mega-menu-link">
+                  <Users className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Teacher Portal</h4>
+                    <p>Class workspaces, grading tools, and resources.</p>
                   </div>
                 </Link>
                 <Link to="/modules/timetable" className="mega-menu-link">
@@ -131,6 +134,68 @@ const Header = () => {
                     <p>Book checkouts and catalog control.</p>
                   </div>
                 </Link>
+              </div>
+            </li>
+
+            {/* Up Work Menu */}
+            <li className="nav-item">
+              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
+                Up Work <ChevronDown size={14} />
+              </a>
+              <div className="mega-menu">
+                <div className="mega-menu-title">Operational Workflows</div>
+                <Link to="/modules/admissions" className="mega-menu-link">
+                  <ClipboardCheck className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Admissions</h4>
+                    <p>Onboarding workflows and registration logs.</p>
+                  </div>
+                </Link>
+                <Link to="/features/hr" className="mega-menu-link">
+                  <Users className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>HR & Staff</h4>
+                    <p>Staff details, payroll, leaves, and appraisals.</p>
+                  </div>
+                </Link>
+                <Link to="/features/communication" className="mega-menu-link">
+                  <MessageSquare className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Communication</h4>
+                    <p>WhatsApp alerts, SMS notifications, and emails.</p>
+                  </div>
+                </Link>
+                <Link to="/modules/attendance" className="mega-menu-link">
+                  <Calendar className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Attendance</h4>
+                    <p>Real-time attendance logs and patterns.</p>
+                  </div>
+                </Link>
+                <Link to="/modules/discipline" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
+                  <AlertTriangle className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Discipline</h4>
+                    <p>Incident logs and parent alerts.</p>
+                  </div>
+                </Link>
+              </div>
+            </li>
+
+            {/* School ERP Menu */}
+            <li className="nav-item">
+              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
+                School ERP <ChevronDown size={14} />
+              </a>
+              <div className="mega-menu mega-menu-wide">
+                <div className="mega-menu-title">School ERP Suite</div>
+                <Link to="/features/finance" className="mega-menu-link">
+                  <Coins className="mega-menu-icon" size={18} />
+                  <div className="mega-menu-info">
+                    <h4>Finance & Billing</h4>
+                    <p>Invoices, receipts, M-Pesa automated balances.</p>
+                  </div>
+                </Link>
                 <Link to="/modules/transport" className="mega-menu-link">
                   <Bus className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
@@ -145,73 +210,18 @@ const Header = () => {
                     <p>Asset management and store auditing.</p>
                   </div>
                 </Link>
-                <Link to="/modules/discipline" className="mega-menu-link">
-                  <AlertTriangle className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Discipline</h4>
-                    <p>Incident logs and parent alerts.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            {/* Portals Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Portals <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Tailored User Portals</div>
                 <Link to="/portals/parent" className="mega-menu-link">
                   <Users className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Parent Portal</h4>
-                    <p>Track student marks, view invoices and pay fees.</p>
-                  </div>
-                </Link>
-                <Link to="/portals/learner" className="mega-menu-link">
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Learner Portal</h4>
-                    <p>Timetables, assignments, and competency trackers.</p>
-                  </div>
-                </Link>
-                <Link to="/portals/teacher" className="mega-menu-link">
-                  <BookOpen className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Teacher Portal</h4>
-                    <p>Grade inputs, class attendance, and rubrics.</p>
+                    <p>Fees, results, attendance, and school notices.</p>
                   </div>
                 </Link>
                 <Link to="/portals/admin" className="mega-menu-link">
-                  <Laptop className="mega-menu-icon" size={18} />
+                  <BarChart3 className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
-                    <h4>Administrator Portal</h4>
-                    <p>Full control, configurations and BI tools.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            {/* Our Scope Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Our Scope <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Institution Types</div>
-                <Link to="/solutions/primary" className="mega-menu-link">
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Primary Schools</h4>
-                    <p>CBE assessments and early-year reports.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/junior" className="mega-menu-link">
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Junior Schools</h4>
-                    <p>CBE grade books, projects, and CAT scoring.</p>
+                    <h4>Admin Portal</h4>
+                    <p>Full control, configurations, and BI tools.</p>
                   </div>
                 </Link>
                 <Link to="/solutions/senior" className="mega-menu-link">
@@ -228,11 +238,11 @@ const Header = () => {
                     <p>Course billing and skills evaluations.</p>
                   </div>
                 </Link>
-                <Link to="/solutions/college" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
+                <Link to="/solutions/college" className="mega-menu-link">
                   <Landmark className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Colleges & Multi-Campus</h4>
-                    <p>Multi-campus consolidation, unified finance tracking, and centralized student registries.</p>
+                    <p>Unified finance tracking and student registries.</p>
                   </div>
                 </Link>
               </div>
@@ -265,54 +275,65 @@ const Header = () => {
             <Link to="/" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Home</Link>
           </div>
 
-          {/* Mobile Modules */}
+          {/* Mobile Assessment */}
           <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('modules')}>
-              Modules <ChevronDown size={18} style={{ transform: activeMobileSub === 'modules' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('assessment')}>
+              Assessment <ChevronDown size={18} style={{ transform: activeMobileSub === 'assessment' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
             </button>
-            {activeMobileSub === 'modules' && (
+            {activeMobileSub === 'assessment' && (
               <div className="mobile-menu-submenu">
-                <Link to="/features/academics" className="mobile-submenu-link">Academics</Link>
                 <Link to="/features/assessment" className="mobile-submenu-link">CBE Assessment</Link>
-                <Link to="/features/finance" className="mobile-submenu-link">Finance & Billing</Link>
-                <Link to="/features/hr" className="mobile-submenu-link">HR & Staff</Link>
-                <Link to="/modules/admissions" className="mobile-submenu-link">Admissions</Link>
-                <Link to="/features/communication" className="mobile-submenu-link">Communication</Link>
+                <Link to="/features/academics" className="mobile-submenu-link">Academics</Link>
                 <Link to="/features/analytics" className="mobile-submenu-link">Reports & Analytics</Link>
-                <Link to="/modules/attendance" className="mobile-submenu-link">Attendance</Link>
+                <Link to="/solutions/primary" className="mobile-submenu-link">Primary CBE</Link>
+                <Link to="/solutions/junior" className="mobile-submenu-link">Junior Assessment</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile ELearning */}
+          <div className="mobile-menu-item">
+            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('elearning')}>
+              ELearning <ChevronDown size={18} style={{ transform: activeMobileSub === 'elearning' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+            </button>
+            {activeMobileSub === 'elearning' && (
+              <div className="mobile-menu-submenu">
+                <Link to="/portals/learner" className="mobile-submenu-link">Learner Portal</Link>
+                <Link to="/portals/teacher" className="mobile-submenu-link">Teacher Portal</Link>
                 <Link to="/modules/timetable" className="mobile-submenu-link">Timetables</Link>
                 <Link to="/modules/library" className="mobile-submenu-link">Library</Link>
-                <Link to="/modules/transport" className="mobile-submenu-link">Transport</Link>
-                <Link to="/modules/inventory" className="mobile-submenu-link">Inventory</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Up Work */}
+          <div className="mobile-menu-item">
+            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('upwork')}>
+              Up Work <ChevronDown size={18} style={{ transform: activeMobileSub === 'upwork' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+            </button>
+            {activeMobileSub === 'upwork' && (
+              <div className="mobile-menu-submenu">
+                <Link to="/modules/admissions" className="mobile-submenu-link">Admissions</Link>
+                <Link to="/features/hr" className="mobile-submenu-link">HR & Staff</Link>
+                <Link to="/features/communication" className="mobile-submenu-link">Communication</Link>
+                <Link to="/modules/attendance" className="mobile-submenu-link">Attendance</Link>
                 <Link to="/modules/discipline" className="mobile-submenu-link">Discipline</Link>
               </div>
             )}
           </div>
 
-          {/* Mobile Portals */}
+          {/* Mobile School ERP */}
           <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('portals')}>
-              Portals <ChevronDown size={18} style={{ transform: activeMobileSub === 'portals' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('schoolErp')}>
+              School ERP <ChevronDown size={18} style={{ transform: activeMobileSub === 'schoolErp' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
             </button>
-            {activeMobileSub === 'portals' && (
+            {activeMobileSub === 'schoolErp' && (
               <div className="mobile-menu-submenu">
+                <Link to="/features/finance" className="mobile-submenu-link">Finance & Billing</Link>
+                <Link to="/modules/transport" className="mobile-submenu-link">Transport</Link>
+                <Link to="/modules/inventory" className="mobile-submenu-link">Inventory</Link>
                 <Link to="/portals/parent" className="mobile-submenu-link">Parent Portal</Link>
-                <Link to="/portals/learner" className="mobile-submenu-link">Learner Portal</Link>
-                <Link to="/portals/teacher" className="mobile-submenu-link">Teacher Portal</Link>
-                <Link to="/portals/admin" className="mobile-submenu-link">Administrator Portal</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Our Scope */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('solutions')}>
-              Our Scope <ChevronDown size={18} style={{ transform: activeMobileSub === 'solutions' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'solutions' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/solutions/primary" className="mobile-submenu-link">Primary Schools</Link>
-                <Link to="/solutions/junior" className="mobile-submenu-link">Junior Schools</Link>
+                <Link to="/portals/admin" className="mobile-submenu-link">Admin Portal</Link>
                 <Link to="/solutions/senior" className="mobile-submenu-link">Senior Schools</Link>
                 <Link to="/solutions/tvet" className="mobile-submenu-link">TVET Institutions</Link>
                 <Link to="/solutions/college" className="mobile-submenu-link">Colleges & Multi-Campus</Link>
