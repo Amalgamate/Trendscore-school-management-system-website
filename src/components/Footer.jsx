@@ -64,7 +64,7 @@ const Footer = () => {
               <li><Link to="/compare/vs-legacy" className="footer-link">vs Legacy Systems</Link></li>
               <li><Link to="/compare/vs-spreadsheet" className="footer-link">vs Spreadsheets</Link></li>
               <li><Link to="/compare/vs-multiple" className="footer-link">vs Multiple Apps</Link></li>
-              <li><Link to="/pricing" className="footer-link">Pricing Plans</Link></li>
+              <li><Link to="/pricing" className="footer-link">Packages</Link></li>
               <li><Link to="/about" className="footer-link">About TrendScore</Link></li>
             </ul>
           </div>

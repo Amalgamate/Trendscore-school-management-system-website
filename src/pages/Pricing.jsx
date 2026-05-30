@@ -15,9 +15,9 @@ const Pricing = () => {
   return (
     <div className="pricing-wrapper" style={{ paddingBottom: '80px' }}>
       <div className="container pricing-header">
-        <span className="badge badge-orange">Pricing</span>
+        <span className="badge badge-orange">Packages</span>
         <h1 style={{ fontSize: '2.5rem', color: 'var(--color-teal)', marginBottom: '16px' }}>
-          Simple Pricing for Every School Stage
+          Simple Packages for Every School Stage
         </h1>
         <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.05rem', color: 'var(--color-text-secondary)' }}>
           Start with a clear base plan, then scale into enterprise modules as your institution grows.

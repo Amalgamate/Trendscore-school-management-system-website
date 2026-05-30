@@ -271,7 +271,7 @@ const ProductTemplate = () => {
               Book Walkthrough <ArrowRight size={16} />
             </Link>
             <Link to="/pricing" className="btn btn-white" style={{ background: 'transparent', color: '#FFFFFF', border: '1px solid #FFFFFF' }}>
-              View Scale Pricing
+              View Packages
             </Link>
           </div>
         </div>

@@ -3,8 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, X, ChevronDown, BookOpen, GraduationCap, Coins, Users, 
   MessageSquare, BarChart3, Calendar, BookMarked, Bus, ClipboardList, 
-  AlertTriangle, ShieldCheck, Activity, Layers, Grid, Shuffle, 
-  FileText, Download, HelpCircle, Laptop, Landmark, ClipboardCheck, ArrowRight
+  AlertTriangle, Laptop, Landmark, ClipboardCheck, ArrowRight
 } from 'lucide-react';
 
 const Header = () => {
@@ -270,91 +269,8 @@ const Header = () => {
               </div>
             </li>
 
-            {/* Compare Menu */}
             <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Compare <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Alternatives Comparison</div>
-                <Link to="/compare/why-switch" className="mega-menu-link">
-                  <ShieldCheck className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Why Switch</h4>
-                    <p>See why modern schools transition to TrendScore.</p>
-                  </div>
-                </Link>
-                <Link to="/compare/vs-manual" className="mega-menu-link">
-                  <Activity className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>vs Manual Processes</h4>
-                    <p>Eliminate paper rubrics, files and physical lines.</p>
-                  </div>
-                </Link>
-                <Link to="/compare/vs-legacy" className="mega-menu-link">
-                  <Layers className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>vs Legacy Systems</h4>
-                    <p>Switch from rigid systems not built for CBE.</p>
-                  </div>
-                </Link>
-                <Link to="/compare/vs-spreadsheet" className="mega-menu-link">
-                  <Grid className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>vs Spreadsheet Chaos</h4>
-                    <p>Solve error-prone calculations and formulas.</p>
-                  </div>
-                </Link>
-                <Link to="/compare/vs-multiple" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
-                  <Shuffle className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>vs Multiple Disconnected Apps</h4>
-                    <p>Unify different grading, attendance and fee programs into one integrated ERP.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            {/* Resources Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Resources <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Knowledge Center</div>
-                <Link to="/resources/blog" className="mega-menu-link">
-                  <FileText className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Blog</h4>
-                    <p>Insights on educational tech developments.</p>
-                  </div>
-                </Link>
-                <Link to="/resources/guides" className="mega-menu-link">
-                  <Download className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Guides</h4>
-                    <p>E-books, reports, and downloadable resources.</p>
-                  </div>
-                </Link>
-                <Link to="/resources/docs" className="mega-menu-link">
-                  <FileText className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Documentation</h4>
-                    <p>Platform user manuals and API schemas.</p>
-                  </div>
-                </Link>
-                <Link to="/resources/faq" className="mega-menu-link">
-                  <HelpCircle className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Support & FAQ</h4>
-                    <p>Guides and answers to common operations.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/pricing" className="nav-link">Pricing</Link>
+              <Link to="/pricing" className="nav-link">Packages</Link>
             </li>
           </ul>
         </nav>
@@ -449,39 +365,8 @@ const Header = () => {
             )}
           </div>
 
-          {/* Mobile Compare */}
           <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('compare')}>
-              Compare <ChevronDown size={18} style={{ transform: activeMobileSub === 'compare' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'compare' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/compare/why-switch" className="mobile-submenu-link">Why Switch</Link>
-                <Link to="/compare/vs-manual" className="mobile-submenu-link">vs Manual Processes</Link>
-                <Link to="/compare/vs-legacy" className="mobile-submenu-link">vs Legacy Systems</Link>
-                <Link to="/compare/vs-spreadsheet" className="mobile-submenu-link">vs Spreadsheet Chaos</Link>
-                <Link to="/compare/vs-multiple" className="mobile-submenu-link">vs Multiple Systems</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Resources */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('resources')}>
-              Resources <ChevronDown size={18} style={{ transform: activeMobileSub === 'resources' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'resources' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/resources/blog" className="mobile-submenu-link">Blog</Link>
-                <Link to="/resources/guides" className="mobile-submenu-link">Guides</Link>
-                <Link to="/resources/docs" className="mobile-submenu-link">Documentation</Link>
-                <Link to="/resources/faq" className="mobile-submenu-link">Support & FAQ</Link>
-              </div>
-            )}
-          </div>
-
-          <div className="mobile-menu-item">
-            <Link to="/pricing" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Pricing</Link>
+            <Link to="/pricing" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Packages</Link>
           </div>
 
           <div className="mobile-menu-actions">
