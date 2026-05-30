@@ -35,9 +35,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 2: Portals & Solutions */}
+          {/* Column 2: Portals & Scope */}
           <div className="footer-column">
-            <h3>Solutions</h3>
+            <h3>Our Scope</h3>
             <ul className="footer-links">
               <li><Link to="/solutions/primary" className="footer-link">Primary Schools</Link></li>
               <li><Link to="/solutions/junior" className="footer-link">Junior Schools</Link></li>

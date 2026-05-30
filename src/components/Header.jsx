@@ -54,13 +54,13 @@ const Header = () => {
               <Link to="/" className="nav-link">Home</Link>
             </li>
 
-            {/* Features Mega Menu */}
+            {/* Modules Mega Menu */}
             <li className="nav-item">
               <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Features <ChevronDown size={14} />
+                Modules <ChevronDown size={14} />
               </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Core ERP Features</div>
+              <div className="mega-menu mega-menu-wide">
+                <div className="mega-menu-title">TrendScore Modules</div>
                 <Link to="/features/academics" className="mega-menu-link">
                   <BookOpen className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
@@ -89,7 +89,7 @@ const Header = () => {
                     <p>Staff details, payroll, leaves, appraisals.</p>
                   </div>
                 </Link>
-                <Link to="/features/admissions" className="mega-menu-link">
+                <Link to="/modules/admissions" className="mega-menu-link">
                   <ClipboardCheck className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Admissions</h4>
@@ -103,35 +103,18 @@ const Header = () => {
                     <p>WhatsApp alerts, SMS notifications, and emails.</p>
                   </div>
                 </Link>
-                <Link to="/features/analytics" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
+                <Link to="/features/analytics" className="mega-menu-link">
                   <BarChart3 className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Reports & Analytics</h4>
-                    <p>Executive analytics dashboard for directors and heads to track financial and performance KPIs.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            {/* Modules Mega Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Modules <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu mega-menu-wide">
-                <div className="mega-menu-title">Operational Modules</div>
-                <Link to="/modules/admissions" className="mega-menu-link">
-                  <ClipboardCheck className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Admissions</h4>
-                    <p>Direct enrollment and paperwork tracking.</p>
+                    <p>Executive dashboards for finance and performance KPIs.</p>
                   </div>
                 </Link>
                 <Link to="/modules/attendance" className="mega-menu-link">
                   <Calendar className="mega-menu-icon" size={18} />
                   <div className="mega-menu-info">
                     <h4>Attendance</h4>
-                    <p>Real-time attendance logs & patterns.</p>
+                    <p>Real-time attendance logs and patterns.</p>
                   </div>
                 </Link>
                 <Link to="/modules/timetable" className="mega-menu-link">
@@ -167,20 +150,6 @@ const Header = () => {
                   <div className="mega-menu-info">
                     <h4>Discipline</h4>
                     <p>Incident logs and parent alerts.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/finance" className="mega-menu-link">
-                  <Coins className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Finance ERP</h4>
-                    <p>Complete ledger controls.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/hr" className="mega-menu-link">
-                  <Users className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Staff HR</h4>
-                    <p>Salaries and contracts.</p>
                   </div>
                 </Link>
               </div>
@@ -224,10 +193,10 @@ const Header = () => {
               </div>
             </li>
 
-            {/* Solutions Menu */}
+            {/* Our Scope Menu */}
             <li className="nav-item">
               <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Solutions <ChevronDown size={14} />
+                Our Scope <ChevronDown size={14} />
               </a>
               <div className="mega-menu">
                 <div className="mega-menu-title">Institution Types</div>
@@ -296,24 +265,6 @@ const Header = () => {
             <Link to="/" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Home</Link>
           </div>
 
-          {/* Mobile Features */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('features')}>
-              Features <ChevronDown size={18} style={{ transform: activeMobileSub === 'features' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'features' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/features/academics" className="mobile-submenu-link">Academics</Link>
-                <Link to="/features/assessment" className="mobile-submenu-link">CBE Assessment</Link>
-                <Link to="/features/finance" className="mobile-submenu-link">Finance & Billing</Link>
-                <Link to="/features/hr" className="mobile-submenu-link">HR & Staff</Link>
-                <Link to="/features/admissions" className="mobile-submenu-link">Admissions</Link>
-                <Link to="/features/communication" className="mobile-submenu-link">Communication</Link>
-                <Link to="/features/analytics" className="mobile-submenu-link">Reports & Analytics</Link>
-              </div>
-            )}
-          </div>
-
           {/* Mobile Modules */}
           <div className="mobile-menu-item">
             <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('modules')}>
@@ -321,15 +272,19 @@ const Header = () => {
             </button>
             {activeMobileSub === 'modules' && (
               <div className="mobile-menu-submenu">
+                <Link to="/features/academics" className="mobile-submenu-link">Academics</Link>
+                <Link to="/features/assessment" className="mobile-submenu-link">CBE Assessment</Link>
+                <Link to="/features/finance" className="mobile-submenu-link">Finance & Billing</Link>
+                <Link to="/features/hr" className="mobile-submenu-link">HR & Staff</Link>
                 <Link to="/modules/admissions" className="mobile-submenu-link">Admissions</Link>
+                <Link to="/features/communication" className="mobile-submenu-link">Communication</Link>
+                <Link to="/features/analytics" className="mobile-submenu-link">Reports & Analytics</Link>
                 <Link to="/modules/attendance" className="mobile-submenu-link">Attendance</Link>
                 <Link to="/modules/timetable" className="mobile-submenu-link">Timetables</Link>
                 <Link to="/modules/library" className="mobile-submenu-link">Library</Link>
                 <Link to="/modules/transport" className="mobile-submenu-link">Transport</Link>
                 <Link to="/modules/inventory" className="mobile-submenu-link">Inventory</Link>
                 <Link to="/modules/discipline" className="mobile-submenu-link">Discipline</Link>
-                <Link to="/modules/finance" className="mobile-submenu-link">Finance ERP</Link>
-                <Link to="/modules/hr" className="mobile-submenu-link">Staff HR</Link>
               </div>
             )}
           </div>
@@ -349,10 +304,10 @@ const Header = () => {
             )}
           </div>
 
-          {/* Mobile Solutions */}
+          {/* Mobile Our Scope */}
           <div className="mobile-menu-item">
             <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('solutions')}>
-              Solutions <ChevronDown size={18} style={{ transform: activeMobileSub === 'solutions' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+              Our Scope <ChevronDown size={18} style={{ transform: activeMobileSub === 'solutions' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
             </button>
             {activeMobileSub === 'solutions' && (
               <div className="mobile-menu-submenu">
