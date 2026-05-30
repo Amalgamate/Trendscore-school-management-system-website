@@ -315,10 +315,6 @@ const Header = () => {
 
         <nav>
           <ul className="nav-menu">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-
             {navItems.map((item) => (
               <li className="nav-item nav-item-has-mega" key={item.key}>
                 <button type="button" className="nav-link nav-link-button">
@@ -373,10 +369,6 @@ const Header = () => {
                 </div>
               </li>
             ))}
-
-            <li className="nav-item">
-              <Link to="/pricing" className="nav-link">Pricing</Link>
-            </li>
           </ul>
         </nav>
 
@@ -394,10 +386,6 @@ const Header = () => {
 
       {mobileOpen && (
         <div className="mobile-menu-panel">
-          <div className="mobile-menu-item">
-            <Link to="/" className="mobile-submenu-link mobile-root-link">Home</Link>
-          </div>
-
           {navItems.map((item) => (
             <div className="mobile-menu-item" key={item.key}>
               <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub(item.key)}>
@@ -424,11 +412,6 @@ const Header = () => {
               )}
             </div>
           ))}
-
-          <div className="mobile-menu-item">
-            <Link to="/pricing" className="mobile-submenu-link mobile-root-link">Pricing</Link>
-          </div>
-
           <div className="mobile-menu-actions">
             <Link to="/login" className="btn btn-secondary">Login</Link>
             <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
