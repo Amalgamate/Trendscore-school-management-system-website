@@ -37,6 +37,8 @@ const navItems = [
     ctaTo: '/features/assessment',
     accent: 'Assessment intelligence',
     visual: 'Learner growth, CBC reports, pathways, and risk alerts in one analytics layer.',
+    image: '/marketing-teacher-cbe-assessment-v1.jpg',
+    imageAlt: 'Assessment intelligence dashboard preview',
     icon: Brain,
     groups: [
       {
@@ -88,6 +90,8 @@ const navItems = [
     ctaTo: '/features/finance',
     accent: 'Complete operational control',
     visual: 'Administration, finance, staff, and daily workflows connected to every portal.',
+    image: '/mega menu/school operations.png',
+    imageAlt: 'School operations illustration',
     icon: Landmark,
     groups: [
       {
@@ -137,6 +141,8 @@ const navItems = [
     ctaTo: '/portals/learner',
     accent: 'One campus for every stakeholder',
     visual: 'Learners, teachers, parents, and school leaders share progress in real time.',
+    image: '/mega menu/digital campus.png',
+    imageAlt: 'Digital campus illustration',
     icon: Cloud,
     groups: [
       {
@@ -184,6 +190,8 @@ const navItems = [
     ctaTo: '/register',
     accent: 'Teacher creator economy',
     visual: 'Creators publish CBC resources, track earnings, and distribute content to schools.',
+    image: '/mega menu/create.png',
+    imageAlt: 'Content hub creator illustration',
     icon: BriefcaseBusiness,
     groups: [
       {
@@ -231,6 +239,8 @@ const navItems = [
     ctaTo: '/resources/blog',
     accent: 'Knowledge for every school team',
     visual: 'Practical resources for school leaders, teachers, parents, and learners.',
+    image: '/mega menu/resources.png',
+    imageAlt: 'Resources hub illustration',
     icon: FileText,
     groups: [
       {
@@ -264,6 +274,7 @@ const navItems = [
 ];
 
 const renderIcon = (Icon, size = 18) => <Icon size={size} />;
+const assetUrl = (path) => encodeURI(path);
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -346,14 +357,12 @@ const Header = () => {
                   <aside className="mega-menu-feature">
                     <div className="mega-menu-feature-screen">
                       <span>{item.accent}</span>
-                      <div className="mega-menu-feature-lines">
-                        <i />
-                        <i />
-                        <i />
-                      </div>
-                      <div className="mega-menu-feature-metric">
-                        <strong>360°</strong>
-                        <small>Connected platform</small>
+                      <div className="mega-menu-feature-image-wrap">
+                        <img
+                          src={assetUrl(item.image)}
+                          alt={item.imageAlt}
+                          className="mega-menu-feature-image"
+                        />
                       </div>
                     </div>
                     <p>{item.visual}</p>
