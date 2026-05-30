@@ -1,10 +1,269 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  Menu, X, ChevronDown, BookOpen, GraduationCap, Coins, Users, 
-  MessageSquare, BarChart3, Calendar, BookMarked, Bus, ClipboardList, 
-  AlertTriangle, Laptop, Landmark, ClipboardCheck, ArrowRight
+import {
+  ArrowRight,
+  BarChart3,
+  BookOpen,
+  Brain,
+  BriefcaseBusiness,
+  Calendar,
+  ChevronDown,
+  ClipboardCheck,
+  Cloud,
+  Coins,
+  FileText,
+  GraduationCap,
+  Landmark,
+  Library,
+  Menu,
+  MessageSquare,
+  Presentation,
+  Route,
+  ShieldCheck,
+  Sparkles,
+  Store,
+  Users,
+  Video,
+  X
 } from 'lucide-react';
+
+const navItems = [
+  {
+    key: 'platform',
+    label: 'Platform',
+    title: 'Assessment & Intelligence',
+    description: 'Transform assessment data into actionable learner growth insights.',
+    cta: 'Explore Assessment Platform',
+    ctaTo: '/features/assessment',
+    accent: 'Assessment intelligence',
+    visual: 'Learner growth, CBC reports, pathways, and risk alerts in one analytics layer.',
+    icon: Brain,
+    groups: [
+      {
+        title: 'Assessment',
+        items: [
+          { label: 'CBC Assessment', to: '/features/assessment', icon: GraduationCap },
+          { label: 'Junior School Assessment', to: '/solutions/junior', icon: ClipboardCheck },
+          { label: 'Senior School Assessment', to: '/solutions/senior', icon: Presentation },
+          { label: 'Assessment Builder', to: '/features/assessment', icon: FileText },
+          { label: 'Rubric Generator', to: '/features/assessment', icon: Sparkles }
+        ]
+      },
+      {
+        title: 'Analytics',
+        items: [
+          { label: 'Learner Growth Tracking', to: '/features/analytics', icon: BarChart3 },
+          { label: 'School Performance Analytics', to: '/features/analytics', icon: Brain },
+          { label: 'Competency Dashboards', to: '/features/analytics', icon: ShieldCheck },
+          { label: 'Risk Learner Detection', to: '/features/analytics', icon: ShieldCheck },
+          { label: 'Intervention Tracking', to: '/features/analytics', icon: Route }
+        ]
+      },
+      {
+        title: 'Career Pathways',
+        items: [
+          { label: 'Senior School Pathways', to: '/solutions/senior', icon: Route },
+          { label: 'Subject Combination Validation', to: '/solutions/senior', icon: ClipboardCheck },
+          { label: 'Career Recommendations', to: '/solutions/senior', icon: Sparkles },
+          { label: 'Pathway Analytics', to: '/features/analytics', icon: BarChart3 }
+        ]
+      },
+      {
+        title: 'Free Tools',
+        items: [
+          { label: 'Free CBC Reports', to: '/resources/guides', icon: FileText },
+          { label: 'Free Assessment Templates', to: '/resources/guides', icon: ClipboardCheck },
+          { label: 'Free Analytics Dashboard', to: '/resources/docs', icon: BarChart3 },
+          { label: 'Free School Readiness Tools', to: '/resources/faq', icon: ShieldCheck }
+        ]
+      }
+    ]
+  },
+  {
+    key: 'solutions',
+    label: 'Solutions',
+    title: 'School Operations',
+    description: 'Everything required to run a modern institution.',
+    cta: 'Explore School ERP',
+    ctaTo: '/features/finance',
+    accent: 'Complete operational control',
+    visual: 'Administration, finance, staff, and daily workflows connected to every portal.',
+    icon: Landmark,
+    groups: [
+      {
+        title: 'Administration',
+        items: [
+          { label: 'Admissions', to: '/modules/admissions', icon: ClipboardCheck },
+          { label: 'Student Information System', to: '/features/academics', icon: Users },
+          { label: 'Academic Structure', to: '/features/academics', icon: BookOpen },
+          { label: 'Timetables', to: '/modules/timetable', icon: Calendar }
+        ]
+      },
+      {
+        title: 'Finance',
+        items: [
+          { label: 'Fee Management', to: '/features/finance', icon: Coins },
+          { label: 'Billing', to: '/features/finance', icon: FileText },
+          { label: 'Accounting', to: '/features/finance', icon: BarChart3 },
+          { label: 'Financial Reports', to: '/features/analytics', icon: Presentation }
+        ]
+      },
+      {
+        title: 'Staff',
+        items: [
+          { label: 'HR Management', to: '/features/hr', icon: Users },
+          { label: 'Payroll', to: '/features/hr', icon: Coins },
+          { label: 'Performance Appraisals', to: '/features/hr', icon: ShieldCheck }
+        ]
+      },
+      {
+        title: 'Operations',
+        items: [
+          { label: 'Attendance', to: '/modules/attendance', icon: ClipboardCheck },
+          { label: 'Communication', to: '/features/communication', icon: MessageSquare },
+          { label: 'Discipline', to: '/modules/discipline', icon: ShieldCheck },
+          { label: 'Inventory', to: '/modules/inventory', icon: Store },
+          { label: 'Transport', to: '/modules/transport', icon: Route }
+        ]
+      }
+    ]
+  },
+  {
+    key: 'digital-campus',
+    label: 'Digital Campus',
+    title: 'Learning Without Limits',
+    description: 'Connect learners, teachers, and parents through one digital campus.',
+    cta: 'Explore Digital Campus',
+    ctaTo: '/portals/learner',
+    accent: 'One campus for every stakeholder',
+    visual: 'Learners, teachers, parents, and school leaders share progress in real time.',
+    icon: Cloud,
+    groups: [
+      {
+        title: 'Learning',
+        items: [
+          { label: 'Learner Portal', to: '/portals/learner', icon: GraduationCap },
+          { label: 'Teacher Portal', to: '/portals/teacher', icon: Users },
+          { label: 'Parent Portal', to: '/portals/parent', icon: Users }
+        ]
+      },
+      {
+        title: 'Classroom',
+        items: [
+          { label: 'Assignments', to: '/portals/learner', icon: ClipboardCheck },
+          { label: 'Live Classes', to: '/portals/teacher', icon: Video },
+          { label: 'Assessments', to: '/features/assessment', icon: FileText },
+          { label: 'Discussions', to: '/features/communication', icon: MessageSquare }
+        ]
+      },
+      {
+        title: 'Resources',
+        items: [
+          { label: 'Digital Library', to: '/modules/library', icon: Library },
+          { label: 'Notes', to: '/resources/guides', icon: BookOpen },
+          { label: 'Lessons', to: '/resources/guides', icon: Presentation },
+          { label: 'Revision Materials', to: '/resources/guides', icon: FileText }
+        ]
+      },
+      {
+        title: 'Collaboration',
+        items: [
+          { label: 'Messaging', to: '/features/communication', icon: MessageSquare },
+          { label: 'Notifications', to: '/features/communication', icon: Sparkles },
+          { label: 'Progress Tracking', to: '/features/analytics', icon: BarChart3 }
+        ]
+      }
+    ]
+  },
+  {
+    key: 'content-hub',
+    label: 'Content Hub',
+    title: 'Create • Teach • Earn',
+    description: 'A marketplace where teachers create, sell, and distribute educational content.',
+    cta: 'Join Content Hub',
+    ctaTo: '/register',
+    accent: 'Teacher creator economy',
+    visual: 'Creators publish CBC resources, track earnings, and distribute content to schools.',
+    icon: BriefcaseBusiness,
+    groups: [
+      {
+        title: 'Creator Hub',
+        items: [
+          { label: 'Become a Creator', to: '/register', icon: Sparkles },
+          { label: 'Upload Resources', to: '/register', icon: FileText },
+          { label: 'Manage Content', to: '/register', icon: Store }
+        ]
+      },
+      {
+        title: 'Marketplace',
+        items: [
+          { label: 'CBC Resources', to: '/resources/guides', icon: BookOpen },
+          { label: 'Lesson Plans', to: '/resources/guides', icon: Presentation },
+          { label: 'Exams', to: '/resources/guides', icon: ClipboardCheck },
+          { label: 'Schemes of Work', to: '/resources/guides', icon: Calendar },
+          { label: 'Revision Papers', to: '/resources/guides', icon: FileText }
+        ]
+      },
+      {
+        title: 'Earnings',
+        items: [
+          { label: 'Revenue Dashboard', to: '/register', icon: BarChart3 },
+          { label: 'Payouts', to: '/register', icon: Coins },
+          { label: 'Creator Analytics', to: '/features/analytics', icon: Brain }
+        ]
+      },
+      {
+        title: 'Community',
+        items: [
+          { label: 'Featured Creators', to: '/resources/blog', icon: Users },
+          { label: 'Teacher Communities', to: '/resources/blog', icon: MessageSquare },
+          { label: 'Webinars', to: '/resources/blog', icon: Video }
+        ]
+      }
+    ]
+  },
+  {
+    key: 'resources',
+    label: 'Resources',
+    title: 'Resources',
+    description: 'Guides, tools, support, and success stories for modern schools.',
+    cta: 'Explore Resources',
+    ctaTo: '/resources/blog',
+    accent: 'Knowledge for every school team',
+    visual: 'Practical resources for school leaders, teachers, parents, and learners.',
+    icon: FileText,
+    groups: [
+      {
+        title: 'Learning Resources',
+        items: [
+          { label: 'Blog', to: '/resources/blog', icon: FileText },
+          { label: 'Guides', to: '/resources/guides', icon: BookOpen },
+          { label: 'Case Studies', to: '/resources/blog', icon: Presentation },
+          { label: 'School Success Stories', to: '/resources/blog', icon: Sparkles }
+        ]
+      },
+      {
+        title: 'Free Tools',
+        items: [
+          { label: 'CBC Report Generator', to: '/resources/guides', icon: FileText },
+          { label: 'Rubric Builder', to: '/features/assessment', icon: ClipboardCheck },
+          { label: 'Assessment Templates', to: '/resources/guides', icon: Sparkles }
+        ]
+      },
+      {
+        title: 'Support',
+        items: [
+          { label: 'Documentation', to: '/resources/docs', icon: BookOpen },
+          { label: 'Help Center', to: '/resources/faq', icon: ShieldCheck },
+          { label: 'Training Videos', to: '/resources/docs', icon: Video },
+          { label: 'Contact Support', to: '/contact', icon: MessageSquare }
+        ]
+      }
+    ]
+  }
+];
+
+const renderIcon = (Icon, size = 18) => <Icon size={size} />;
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,22 +275,18 @@ const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
     setActiveMobileSub(null);
   }, [location.pathname]);
 
   const toggleMobileSub = (name) => {
-    if (activeMobileSub === name) {
-      setActiveMobileSub(null);
-    } else {
-      setActiveMobileSub(name);
-    }
+    setActiveMobileSub((current) => (current === name ? null : name));
   };
 
   return (
@@ -47,307 +302,127 @@ const Header = () => {
           <span className="logo-text" style={{ display: 'none' }}>Trend<span style={{ color: '#F97316' }}>Score</span></span>
         </Link>
 
-        {/* Desktop Nav Menu */}
         <nav>
           <ul className="nav-menu">
             <li className="nav-item">
               <Link to="/" className="nav-link">Home</Link>
             </li>
 
-            {/* Assessment Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Assessment <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Assessment & Performance</div>
-                <Link to="/features/assessment" className="mega-menu-link">
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>CBE Assessment</h4>
-                    <p>Rubrics, competencies, assessment reports.</p>
-                  </div>
-                </Link>
-                <Link to="/features/academics" className="mega-menu-link">
-                  <BookOpen className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Academics</h4>
-                    <p>Classes, subjects, term setup, and learner records.</p>
-                  </div>
-                </Link>
-                <Link to="/features/analytics" className="mega-menu-link">
-                  <BarChart3 className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Reports & Analytics</h4>
-                    <p>Dashboards for academic and performance KPIs.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/primary" className="mega-menu-link">
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Primary CBE</h4>
-                    <p>Early-year reports and competency growth tracking.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/junior" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
-                  <GraduationCap className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Junior School Assessment</h4>
-                    <p>SBAs, projects, practicals, and CAT scoring.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
+            {navItems.map((item) => (
+              <li className="nav-item nav-item-has-mega" key={item.key}>
+                <button type="button" className="nav-link nav-link-button">
+                  {item.label} <ChevronDown size={14} />
+                </button>
+                <div className="mega-menu ecosystem-mega-menu">
+                  <div className="mega-menu-main">
+                    <div className="mega-menu-intro">
+                      <div className="mega-menu-kicker">
+                        <span>{renderIcon(item.icon, 16)}</span>
+                        Education Cloud
+                      </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
 
-            {/* ELearning Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                ELearning <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Digital Learning</div>
-                <Link to="/portals/learner" className="mega-menu-link">
-                  <BookOpen className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Learner Portal</h4>
-                    <p>Assignments, progress, results, and notices.</p>
+                    <div className="mega-menu-groups">
+                      {item.groups.map((group) => (
+                        <div className="mega-menu-group" key={group.title}>
+                          <h4>{group.title}</h4>
+                          <div className="mega-menu-group-links">
+                            {group.items.map((link) => (
+                              <Link to={link.to} className="mega-menu-link" key={`${group.title}-${link.label}`}>
+                                <span className="mega-menu-icon">{renderIcon(link.icon)}</span>
+                                <span className="mega-menu-info">
+                                  <strong>{link.label}</strong>
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </Link>
-                <Link to="/portals/teacher" className="mega-menu-link">
-                  <Users className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Teacher Portal</h4>
-                    <p>Class workspaces, grading tools, and resources.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/timetable" className="mega-menu-link">
-                  <Laptop className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Timetables</h4>
-                    <p>Conflict-free calendar generators.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/library" className="mega-menu-link">
-                  <BookMarked className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Library</h4>
-                    <p>Book checkouts and catalog control.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
 
-            {/* Up Work Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                Up Work <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu">
-                <div className="mega-menu-title">Operational Workflows</div>
-                <Link to="/modules/admissions" className="mega-menu-link">
-                  <ClipboardCheck className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Admissions</h4>
-                    <p>Onboarding workflows and registration logs.</p>
-                  </div>
-                </Link>
-                <Link to="/features/hr" className="mega-menu-link">
-                  <Users className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>HR & Staff</h4>
-                    <p>Staff details, payroll, leaves, and appraisals.</p>
-                  </div>
-                </Link>
-                <Link to="/features/communication" className="mega-menu-link">
-                  <MessageSquare className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Communication</h4>
-                    <p>WhatsApp alerts, SMS notifications, and emails.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/attendance" className="mega-menu-link">
-                  <Calendar className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Attendance</h4>
-                    <p>Real-time attendance logs and patterns.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/discipline" className="mega-menu-link" style={{ gridColumn: 'span 2' }}>
-                  <AlertTriangle className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Discipline</h4>
-                    <p>Incident logs and parent alerts.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-
-            {/* School ERP Menu */}
-            <li className="nav-item">
-              <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
-                School ERP <ChevronDown size={14} />
-              </a>
-              <div className="mega-menu mega-menu-wide">
-                <div className="mega-menu-title">School ERP Suite</div>
-                <Link to="/features/finance" className="mega-menu-link">
-                  <Coins className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Finance & Billing</h4>
-                    <p>Invoices, receipts, M-Pesa automated balances.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/transport" className="mega-menu-link">
-                  <Bus className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Transport</h4>
-                    <p>Route assignments and fee balances.</p>
-                  </div>
-                </Link>
-                <Link to="/modules/inventory" className="mega-menu-link">
-                  <ClipboardList className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Inventory</h4>
-                    <p>Asset management and store auditing.</p>
-                  </div>
-                </Link>
-                <Link to="/portals/parent" className="mega-menu-link">
-                  <Users className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Parent Portal</h4>
-                    <p>Fees, results, attendance, and school notices.</p>
-                  </div>
-                </Link>
-                <Link to="/portals/admin" className="mega-menu-link">
-                  <BarChart3 className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Admin Portal</h4>
-                    <p>Full control, configurations, and BI tools.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/senior" className="mega-menu-link">
-                  <Laptop className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Senior Schools</h4>
-                    <p>Pathways management and career guides.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/tvet" className="mega-menu-link">
-                  <Landmark className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>TVET Institutions</h4>
-                    <p>Course billing and skills evaluations.</p>
-                  </div>
-                </Link>
-                <Link to="/solutions/college" className="mega-menu-link">
-                  <Landmark className="mega-menu-icon" size={18} />
-                  <div className="mega-menu-info">
-                    <h4>Colleges & Multi-Campus</h4>
-                    <p>Unified finance tracking and student registries.</p>
-                  </div>
-                </Link>
-              </div>
-            </li>
+                  <aside className="mega-menu-feature">
+                    <div className="mega-menu-feature-screen">
+                      <span>{item.accent}</span>
+                      <div className="mega-menu-feature-lines">
+                        <i />
+                        <i />
+                        <i />
+                      </div>
+                      <div className="mega-menu-feature-metric">
+                        <strong>360°</strong>
+                        <small>Connected platform</small>
+                      </div>
+                    </div>
+                    <p>{item.visual}</p>
+                    <Link to={item.ctaTo} className="mega-menu-cta">
+                      {item.cta} <ArrowRight size={16} />
+                    </Link>
+                  </aside>
+                </div>
+              </li>
+            ))}
 
             <li className="nav-item">
-              <Link to="/pricing" className="nav-link">Packages</Link>
+              <Link to="/pricing" className="nav-link">Pricing</Link>
             </li>
           </ul>
         </nav>
 
-        {/* Actions */}
         <div className="nav-actions">
-          <Link to="/register" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Register</Link>
+          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Login</Link>
           <Link to="/book-demo" className="btn btn-primary btn-nav-demo">
-            Book Free Demo <ArrowRight size={16} />
+            Book Demo <ArrowRight size={16} />
           </Link>
         </div>
 
-        {/* Mobile Toggle Button */}
-        <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle navigation">
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu Panel */}
       {mobileOpen && (
         <div className="mobile-menu-panel">
           <div className="mobile-menu-item">
-            <Link to="/" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Home</Link>
+            <Link to="/" className="mobile-submenu-link mobile-root-link">Home</Link>
           </div>
 
-          {/* Mobile Assessment */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('assessment')}>
-              Assessment <ChevronDown size={18} style={{ transform: activeMobileSub === 'assessment' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'assessment' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/features/assessment" className="mobile-submenu-link">CBE Assessment</Link>
-                <Link to="/features/academics" className="mobile-submenu-link">Academics</Link>
-                <Link to="/features/analytics" className="mobile-submenu-link">Reports & Analytics</Link>
-                <Link to="/solutions/primary" className="mobile-submenu-link">Primary CBE</Link>
-                <Link to="/solutions/junior" className="mobile-submenu-link">Junior Assessment</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile ELearning */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('elearning')}>
-              ELearning <ChevronDown size={18} style={{ transform: activeMobileSub === 'elearning' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'elearning' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/portals/learner" className="mobile-submenu-link">Learner Portal</Link>
-                <Link to="/portals/teacher" className="mobile-submenu-link">Teacher Portal</Link>
-                <Link to="/modules/timetable" className="mobile-submenu-link">Timetables</Link>
-                <Link to="/modules/library" className="mobile-submenu-link">Library</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Up Work */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('upwork')}>
-              Up Work <ChevronDown size={18} style={{ transform: activeMobileSub === 'upwork' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'upwork' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/modules/admissions" className="mobile-submenu-link">Admissions</Link>
-                <Link to="/features/hr" className="mobile-submenu-link">HR & Staff</Link>
-                <Link to="/features/communication" className="mobile-submenu-link">Communication</Link>
-                <Link to="/modules/attendance" className="mobile-submenu-link">Attendance</Link>
-                <Link to="/modules/discipline" className="mobile-submenu-link">Discipline</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile School ERP */}
-          <div className="mobile-menu-item">
-            <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub('schoolErp')}>
-              School ERP <ChevronDown size={18} style={{ transform: activeMobileSub === 'schoolErp' ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-            </button>
-            {activeMobileSub === 'schoolErp' && (
-              <div className="mobile-menu-submenu">
-                <Link to="/features/finance" className="mobile-submenu-link">Finance & Billing</Link>
-                <Link to="/modules/transport" className="mobile-submenu-link">Transport</Link>
-                <Link to="/modules/inventory" className="mobile-submenu-link">Inventory</Link>
-                <Link to="/portals/parent" className="mobile-submenu-link">Parent Portal</Link>
-                <Link to="/portals/admin" className="mobile-submenu-link">Admin Portal</Link>
-                <Link to="/solutions/senior" className="mobile-submenu-link">Senior Schools</Link>
-                <Link to="/solutions/tvet" className="mobile-submenu-link">TVET Institutions</Link>
-                <Link to="/solutions/college" className="mobile-submenu-link">Colleges & Multi-Campus</Link>
-              </div>
-            )}
-          </div>
+          {navItems.map((item) => (
+            <div className="mobile-menu-item" key={item.key}>
+              <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub(item.key)}>
+                {item.label}
+                <ChevronDown size={18} style={{ transform: activeMobileSub === item.key ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+              </button>
+              {activeMobileSub === item.key && (
+                <div className="mobile-menu-submenu mobile-ecosystem-submenu">
+                  <p>{item.description}</p>
+                  {item.groups.map((group) => (
+                    <div className="mobile-mega-group" key={group.title}>
+                      <h4>{group.title}</h4>
+                      {group.items.map((link) => (
+                        <Link to={link.to} className="mobile-submenu-link" key={`${group.title}-${link.label}`}>
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                  <Link to={item.ctaTo} className="mobile-mega-cta">
+                    {item.cta} <ArrowRight size={15} />
+                  </Link>
+                </div>
+              )}
+            </div>
+          ))}
 
           <div className="mobile-menu-item">
-            <Link to="/pricing" className="mobile-submenu-link" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#0F4C5C' }}>Packages</Link>
+            <Link to="/pricing" className="mobile-submenu-link mobile-root-link">Pricing</Link>
           </div>
 
           <div className="mobile-menu-actions">
-            <Link to="/register" className="btn btn-secondary">Register</Link>
-            <Link to="/book-demo" className="btn btn-primary">Book Free Demo</Link>
+            <Link to="/login" className="btn btn-secondary">Login</Link>
+            <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
           </div>
         </div>
       )}
