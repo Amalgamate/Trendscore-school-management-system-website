@@ -83,7 +83,7 @@ const navItems = [
   },
   {
     key: 'solutions',
-    label: 'Solutions',
+    label: 'School ERP',
     title: 'School Operations',
     description: 'Everything required to run a modern institution.',
     cta: 'Explore School ERP',
@@ -183,10 +183,10 @@ const navItems = [
   },
   {
     key: 'content-hub',
-    label: 'Content Hub',
+    label: 'Creators Hub',
     title: 'Create • Teach • Earn',
     description: 'A marketplace where teachers create, sell, and distribute educational content.',
-    cta: 'Join Content Hub',
+    cta: 'Join Creators Hub',
     ctaTo: '/register',
     accent: 'Teacher creator economy',
     visual: 'Creators publish CBC resources, track earnings, and distribute content to schools.',
@@ -373,7 +373,7 @@ const Header = () => {
         </nav>
 
         <div className="nav-actions">
-          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Login</Link>
+          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Register school</Link>
           <Link to="/book-demo" className="btn btn-primary btn-nav-demo">
             Book Demo <ArrowRight size={16} />
           </Link>
@@ -413,7 +413,7 @@ const Header = () => {
             </div>
           ))}
           <div className="mobile-menu-actions">
-            <Link to="/login" className="btn btn-secondary">Login</Link>
+            <Link to="/login" className="btn btn-secondary">Register school</Link>
             <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
           </div>
         </div>
