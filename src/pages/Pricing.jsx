@@ -59,7 +59,7 @@ const Pricing = () => {
             </div>
           </div>
           <div>
-            <Link to="/book-demo" className="btn btn-primary" style={{ width: '100%' }}>
+            <Link to="/register" className="btn btn-primary" style={{ width: '100%' }}>
               Start Free
             </Link>
             <ul className="pricing-features-list">
@@ -115,7 +115,7 @@ const Pricing = () => {
             </div>
           </div>
           <div>
-            <Link to="/book-demo" className="btn btn-secondary" style={{ width: '100%' }}>
+            <Link to="/register" className="btn btn-secondary" style={{ width: '100%' }}>
               Request Enterprise Proposal
             </Link>
             <ul className="pricing-features-list">

@@ -6,6 +6,7 @@ import PageLayout from './components/PageLayout';
 import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import BookDemo from './pages/BookDemo';
+import Register from './pages/Register';
 import ProductTemplate from './pages/ProductTemplate';
 import PortalTemplate from './pages/PortalTemplate';
 import SolutionTemplate from './pages/SolutionTemplate';
@@ -144,34 +145,6 @@ const Contact = () => (
   </div>
 );
 
-const Login = () => (
-  <div style={{ minHeight: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '100px 24px' }}>
-    <div className="glass-panel" style={{ width: '100%', maxWidth: '440px', padding: '40px', textAlign: 'center' }}>
-      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ margin: '0 auto 16px auto' }}>
-        <rect width="32" height="32" rx="8" fill="#0F4C5C"/>
-        <path d="M12 19L16 11L20 19" stroke="#F97316" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-      <h2 style={{ marginBottom: '8px' }}>Log In to TrendScore</h2>
-      <p style={{ fontSize: '0.9rem', marginBottom: '32px' }}>Please choose your portal to sign in.</p>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <a href="#admin" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'space-between' }}>
-          <span>Administrator Login</span> &rarr;
-        </a>
-        <a href="#teacher" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'space-between' }}>
-          <span>Teacher Portal Login</span> &rarr;
-        </a>
-        <a href="#parent" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'space-between' }}>
-          <span>Parent App Login</span> &rarr;
-        </a>
-        <a href="#learner" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'space-between' }}>
-          <span>Student Portal Login</span> &rarr;
-        </a>
-      </div>
-    </div>
-  </div>
-);
-
 const Privacy = () => (
   <div className="container" style={{ padding: '160px 24px 80px 24px', minHeight: '60vh' }}>
     <h1>Privacy Policy</h1>
@@ -197,8 +170,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/book-demo" element={<BookDemo />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Navigate to="/register" replace />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           

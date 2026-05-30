@@ -88,7 +88,7 @@ const PortalTemplate = () => {
 
             <div style={{ display: 'flex', gap: '16px' }}>
               <Link to="/book-demo" className="btn btn-primary">Book Demo Walkthrough</Link>
-              <Link to="/login" className="btn btn-secondary">Access Demo Login</Link>
+              <Link to="/register" className="btn btn-secondary">Register Institution</Link>
             </div>
           </div>
 
