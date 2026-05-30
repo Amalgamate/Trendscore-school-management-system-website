@@ -361,7 +361,7 @@ const Header = () => {
 
         {/* Actions */}
         <div className="nav-actions">
-          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Login</Link>
+          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Register</Link>
           <Link to="/book-demo" className="btn btn-primary btn-nav-demo">
             Book Free Demo <ArrowRight size={16} />
           </Link>
@@ -485,7 +485,7 @@ const Header = () => {
           </div>
 
           <div className="mobile-menu-actions">
-            <Link to="/login" className="btn btn-secondary">Login</Link>
+            <Link to="/login" className="btn btn-secondary">Register</Link>
             <Link to="/book-demo" className="btn btn-primary">Book Free Demo</Link>
           </div>
         </div>
