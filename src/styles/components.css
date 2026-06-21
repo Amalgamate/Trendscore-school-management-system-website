@@ -335,6 +335,12 @@
 }
 
 @media (max-width: 1024px) {
+  .site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
   .nav-container {
     padding: 0 16px;
   }

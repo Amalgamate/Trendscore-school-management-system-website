@@ -150,7 +150,9 @@ const Home = () => {
                   <strong>{currentSlide.role}</strong>
                 </div>
                 <h1 className="hero-title">
-                  {currentSlide.title}
+                  {currentSlide.title.split(' ').map((word, index) => (
+                    <span className="hero-title-word" key={`${word}-${index}`}>{word} </span>
+                  ))}
                 </h1>
                 <p className="hero-subtitle">
                   {currentSlide.description}
