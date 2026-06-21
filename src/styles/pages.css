@@ -2876,41 +2876,46 @@ input:checked + .toggle-slider:before {
   }
 
   .hero-slide-content {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    position: relative;
+    min-height: 620px;
   }
 
   .hero-slide,
   .hero-slide-content {
-    min-height: auto;
+    min-height: 620px;
   }
 
   .hero-content {
-    order: 1;
-    padding: 28px 20px 18px;
+    position: relative;
+    z-index: 4;
+    min-height: 620px;
+    justify-content: flex-end;
+    padding: 96px 20px 86px;
   }
 
   .hero-visual {
-    order: 2;
-    min-height: 330px;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    min-height: 100%;
   }
 
   .hero-slide-image {
-    min-height: 330px;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
     object-position: center top;
   }
 
   .hero-image-fade-side {
-    background: linear-gradient(
-      180deg,
-      rgba(255,255,255,1) 0%,
-      rgba(255,255,255,0.24) 28%,
-      rgba(255,255,255,0) 58%
-    );
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.7) 35%, rgba(255,255,255,0.92) 100%),
+      linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.68) 48%, rgba(255,255,255,0.2) 100%);
   }
 
   .hero-image-fade-bottom {
-    background: linear-gradient(0deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 34%);
+    background: linear-gradient(0deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.5) 42%, rgba(255,255,255,0) 72%);
   }
 
   .hero-title {
@@ -2919,11 +2924,18 @@ input:checked + .toggle-slider:before {
 
   .hero-subtitle {
     line-height: 1.5;
+    color: #38556b;
   }
 
   .hero-feature-chip {
-    box-shadow: none;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-buttons .btn {
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
   }
 
   .integrations-box {
@@ -2976,7 +2988,13 @@ input:checked + .toggle-slider:before {
   }
 
   .hero-content {
-    padding: 24px 16px 16px;
+    min-height: 600px;
+    padding: 78px 16px 78px;
+  }
+
+  .hero-slide,
+  .hero-slide-content {
+    min-height: 600px;
   }
 
   .hero-title {
@@ -2991,7 +3009,7 @@ input:checked + .toggle-slider:before {
 
   .hero-visual,
   .hero-slide-image {
-    min-height: 300px;
+    min-height: 100%;
   }
 
   .hero-buttons .btn {

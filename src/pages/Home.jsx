@@ -116,27 +116,6 @@ const Home = () => {
     { name: 'New Vision Academy', logo: 'NV' }
   ];
 
-  const testimonials = [
-    {
-      quote: 'Our previous system was not ready for CBE. Teachers spent hours grading portfolios. With TrendScore, assessment levels are logged in seconds, and our term report compilers run automatically.',
-      initials: 'JK',
-      name: 'John Kipkemboi',
-      role: 'Principal, Rift Valley Academy',
-    },
-    {
-      quote: 'Fee reconciliation used to take our finance team two weeks at start of term. With M-Pesa automated ledgers, parents pay and receive receipts immediately. Our collection rate jumped by 24%.',
-      initials: 'AW',
-      name: 'Alice Wambui',
-      role: 'Director, Sunshine School Nairobi',
-    },
-    {
-      quote: 'The parent portal has transformed parent-school collaboration. Parents track attendance warnings and results directly on mobile, reducing customer support queries in our offices.',
-      initials: 'SO',
-      name: 'Sister Olivia',
-      role: "Headmistress, St. Mary's Girls Primary",
-    },
-  ];
-
   return (
     <div className="home-wrapper">
       {/* 2. Hero Section */}
@@ -417,34 +396,6 @@ const Home = () => {
                 </svg>
                 <div className="integration-logo-text">OpenAI</div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 14. Success Stories */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="badge badge-teal">Case Studies</span>
-            <h2>Success Stories from School Leaders</h2>
-            <p>Read how principals and administrators achieved financial transparency and simplified grading using TrendScore.</p>
-          </div>
-
-          <div className="testimonials-carousel">
-            <div className="testimonials-row">
-              {testimonials.map((item) => (
-                <div className="testimonial-card" key={item.name}>
-                  <p className="testimonial-text">"{item.quote}"</p>
-                  <div className="testimonial-user">
-                    <div className="testimonial-avatar">{item.initials}</div>
-                    <div className="testimonial-meta">
-                      <h4>{item.name}</h4>
-                      <p>{item.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
