@@ -2872,6 +2872,10 @@ input:checked + .toggle-slider:before {
     padding-bottom: 52px;
   }
 
+  .platform-hero-section {
+    display: none;
+  }
+
   .hero-slider-section {
     padding-top: var(--header-height);
   }
