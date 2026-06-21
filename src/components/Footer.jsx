@@ -75,7 +75,7 @@ const Footer = () => {
             <ul className="footer-links" style={{ gap: '16px', marginBottom: '24px' }}>
               <li style={{ display: 'flex', gap: '8px', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Phone size={18} style={{ color: '#F97316', flexShrink: 0 }} />
-                <span>+254 700 000 000</span>
+                <span>0713612141</span>
               </li>
               <li style={{ display: 'flex', gap: '8px', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>
                 <Mail size={18} style={{ color: '#F97316', flexShrink: 0 }} />

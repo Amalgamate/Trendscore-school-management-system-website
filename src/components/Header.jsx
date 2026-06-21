@@ -13,7 +13,6 @@ import {
   Coins,
   FileText,
   GraduationCap,
-  Landmark,
   Library,
   Menu,
   MessageSquare,
@@ -30,7 +29,8 @@ import {
 const navItems = [
   {
     key: 'platform',
-    label: 'Platform',
+    label: 'About',
+    noDropdown: true,
     title: 'Assessment & Intelligence',
     description: 'Transform assessment data into actionable learner growth insights.',
     cta: 'Explore Assessment Platform',
@@ -83,58 +83,28 @@ const navItems = [
   },
   {
     key: 'solutions',
-    label: 'School ERP',
-    title: 'School Operations',
-    description: 'Everything required to run a modern institution.',
-    cta: 'Explore School ERP',
-    ctaTo: '/features/finance',
-    accent: 'Complete operational control',
-    visual: 'Administration, finance, staff, and daily workflows connected to every portal.',
-    image: '/mega menu/school operations.png',
-    imageAlt: 'School operations illustration',
-    icon: Landmark,
-    groups: [
-      {
-        title: 'Administration',
-        items: [
-          { label: 'Admissions', to: '/modules/admissions', icon: ClipboardCheck },
-          { label: 'Student Information System', to: '/features/academics', icon: Users },
-          { label: 'Academic Structure', to: '/features/academics', icon: BookOpen },
-          { label: 'Timetables', to: '/modules/timetable', icon: Calendar }
-        ]
-      },
-      {
-        title: 'Finance',
-        items: [
-          { label: 'Fee Management', to: '/features/finance', icon: Coins },
-          { label: 'Billing', to: '/features/finance', icon: FileText },
-          { label: 'Accounting', to: '/features/finance', icon: BarChart3 },
-          { label: 'Financial Reports', to: '/features/analytics', icon: Presentation }
-        ]
-      },
-      {
-        title: 'Staff',
-        items: [
-          { label: 'HR Management', to: '/features/hr', icon: Users },
-          { label: 'Payroll', to: '/features/hr', icon: Coins },
-          { label: 'Performance Appraisals', to: '/features/hr', icon: ShieldCheck }
-        ]
-      },
-      {
-        title: 'Operations',
-        items: [
-          { label: 'Attendance', to: '/modules/attendance', icon: ClipboardCheck },
-          { label: 'Communication', to: '/features/communication', icon: MessageSquare },
-          { label: 'Discipline', to: '/modules/discipline', icon: ShieldCheck },
-          { label: 'Inventory', to: '/modules/inventory', icon: Store },
-          { label: 'Transport', to: '/modules/transport', icon: Route }
-        ]
-      }
+    label: 'Features',
+    menuType: 'simple',
+    items: [
+      { label: 'Academics Management', to: '/features/academics', icon: BookOpen },
+      { label: 'CBE Assessments', to: '/features/assessment', icon: GraduationCap },
+      { label: 'Fees & Finance', to: '/features/finance', icon: Coins },
+      { label: 'Admissions', to: '/features/admissions', icon: ClipboardCheck },
+      { label: 'Reports & Analytics', to: '/features/analytics', icon: BarChart3 },
+      { label: 'Communication', to: '/features/communication', icon: MessageSquare },
+      { label: 'HR & Payroll', to: '/features/hr', icon: Users },
+      { label: 'Attendance', to: '/modules/attendance', icon: ClipboardCheck },
+      { label: 'Timetable', to: '/modules/timetable', icon: Calendar },
+      { label: 'Library', to: '/modules/library', icon: Library },
+      { label: 'Transport', to: '/modules/transport', icon: Route },
+      { label: 'Inventory', to: '/modules/inventory', icon: Store },
+      { label: 'Discipline', to: '/modules/discipline', icon: ShieldCheck }
     ]
   },
   {
     key: 'digital-campus',
     label: 'Digital Campus',
+    comingSoon: true,
     title: 'Learning Without Limits',
     description: 'Connect learners, teachers, and parents through one digital campus.',
     cta: 'Explore Digital Campus',
@@ -184,6 +154,7 @@ const navItems = [
   {
     key: 'content-hub',
     label: 'Creators Hub',
+    comingSoon: true,
     title: 'Create • Teach • Earn',
     description: 'A marketplace where teachers create, sell, and distribute educational content.',
     cta: 'Join Creators Hub',
@@ -233,6 +204,7 @@ const navItems = [
   {
     key: 'resources',
     label: 'Resources',
+    comingSoon: true,
     title: 'Resources',
     description: 'Guides, tools, support, and success stories for modern schools.',
     cta: 'Explore Resources',
@@ -316,64 +288,83 @@ const Header = () => {
         <nav>
           <ul className="nav-menu">
             {navItems.map((item) => (
-              <li className="nav-item nav-item-has-mega" key={item.key}>
-                <button type="button" className="nav-link nav-link-button">
-                  {item.label} <ChevronDown size={14} />
+              <li
+                className={`nav-item nav-item-has-mega ${item.comingSoon ? 'nav-item-coming-soon' : ''}`}
+                key={item.key}
+              >
+                <button
+                  type="button"
+                  className="nav-link nav-link-button"
+                  aria-disabled={item.comingSoon ? 'true' : undefined}
+                >
+                  {item.label} {!item.noDropdown && <ChevronDown size={14} />}
                 </button>
-                <div className="mega-menu ecosystem-mega-menu">
-                  <div className="mega-menu-main">
-                    <div className="mega-menu-intro">
-                      <div className="mega-menu-kicker">
-                        <span>{renderIcon(item.icon, 16)}</span>
-                        Education Cloud
-                      </div>
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                    </div>
-
-                    <div className="mega-menu-groups">
-                      {item.groups.map((group) => (
-                        <div className="mega-menu-group" key={group.title}>
-                          <h4>{group.title}</h4>
-                          <div className="mega-menu-group-links">
-                            {group.items.map((link) => (
-                              <Link to={link.to} className="mega-menu-link" key={`${group.title}-${link.label}`}>
-                                <span className="mega-menu-icon">{renderIcon(link.icon)}</span>
-                                <span className="mega-menu-info">
-                                  <strong>{link.label}</strong>
-                                </span>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                {item.comingSoon && <span className="nav-coming-soon-label">Coming soon</span>}
+                {!item.noDropdown && !item.comingSoon && item.menuType === 'simple' && (
+                  <div className="simple-dropdown">
+                    {item.items.map((link) => (
+                      <Link to={link.to} className="simple-dropdown-link" key={link.label}>
+                        <span className="simple-dropdown-icon">{renderIcon(link.icon, 17)}</span>
+                        <span>{link.label}</span>
+                      </Link>
+                    ))}
                   </div>
+                )}
+                {!item.noDropdown && !item.comingSoon && item.menuType !== 'simple' && (
+                  <div className="mega-menu ecosystem-mega-menu">
+                    <div className="mega-menu-main">
+                      <div className="mega-menu-intro">
+                        <div className="mega-menu-kicker">
+                          <span>{renderIcon(item.icon, 16)}</span>
+                          Education Cloud
+                        </div>
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </div>
 
-                  <aside className="mega-menu-feature">
-                    <div className="mega-menu-feature-screen">
-                      <span>{item.accent}</span>
-                      <div className="mega-menu-feature-image-wrap">
-                        <img
-                          src={assetUrl(item.image)}
-                          alt={item.imageAlt}
-                          className="mega-menu-feature-image"
-                        />
+                      <div className="mega-menu-groups">
+                        {item.groups.map((group) => (
+                          <div className="mega-menu-group" key={group.title}>
+                            <h4>{group.title}</h4>
+                            <div className="mega-menu-group-links">
+                              {group.items.map((link) => (
+                                <Link to={link.to} className="mega-menu-link" key={`${group.title}-${link.label}`}>
+                                  <span className="mega-menu-icon">{renderIcon(link.icon)}</span>
+                                  <span className="mega-menu-info">
+                                    <strong>{link.label}</strong>
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                    <p>{item.visual}</p>
-                    <Link to={item.ctaTo} className="mega-menu-cta">
-                      {item.cta} <ArrowRight size={16} />
-                    </Link>
-                  </aside>
-                </div>
+
+                    <aside className="mega-menu-feature">
+                      <div className="mega-menu-feature-screen">
+                        <span>{item.accent}</span>
+                        <div className="mega-menu-feature-image-wrap">
+                          <img
+                            src={assetUrl(item.image)}
+                            alt={item.imageAlt}
+                            className="mega-menu-feature-image"
+                          />
+                        </div>
+                      </div>
+                      <p>{item.visual}</p>
+                      <Link to={item.ctaTo} className="mega-menu-cta">
+                        {item.cta} <ArrowRight size={16} />
+                      </Link>
+                    </aside>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="nav-actions">
-          <Link to="/login" className="btn btn-secondary" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Register school</Link>
           <Link to="/book-demo" className="btn btn-primary btn-nav-demo">
             Book Demo <ArrowRight size={16} />
           </Link>
@@ -388,32 +379,55 @@ const Header = () => {
         <div className="mobile-menu-panel">
           {navItems.map((item) => (
             <div className="mobile-menu-item" key={item.key}>
-              <button className="mobile-menu-title-btn" onClick={() => toggleMobileSub(item.key)}>
+              <button
+                className={`mobile-menu-title-btn ${item.comingSoon ? 'mobile-menu-title-disabled' : ''}`}
+                onClick={() => {
+                  if (!item.comingSoon && !item.noDropdown) {
+                    toggleMobileSub(item.key);
+                  }
+                }}
+                aria-disabled={item.comingSoon ? 'true' : undefined}
+              >
                 {item.label}
-                <ChevronDown size={18} style={{ transform: activeMobileSub === item.key ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+                {item.comingSoon ? (
+                  <span className="mobile-coming-soon-label">Coming soon</span>
+                ) : item.noDropdown ? null : (
+                  <ChevronDown size={18} style={{ transform: activeMobileSub === item.key ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+                )}
               </button>
-              {activeMobileSub === item.key && (
+              {!item.noDropdown && !item.comingSoon && activeMobileSub === item.key && (
                 <div className="mobile-menu-submenu mobile-ecosystem-submenu">
-                  <p>{item.description}</p>
-                  {item.groups.map((group) => (
-                    <div className="mobile-mega-group" key={group.title}>
-                      <h4>{group.title}</h4>
-                      {group.items.map((link) => (
-                        <Link to={link.to} className="mobile-submenu-link" key={`${group.title}-${link.label}`}>
+                  {item.menuType === 'simple' ? (
+                    <div className="mobile-mega-group">
+                      {item.items.map((link) => (
+                        <Link to={link.to} className="mobile-submenu-link" key={link.label}>
                           {link.label}
                         </Link>
                       ))}
                     </div>
-                  ))}
-                  <Link to={item.ctaTo} className="mobile-mega-cta">
-                    {item.cta} <ArrowRight size={15} />
-                  </Link>
+                  ) : (
+                    <>
+                      <p>{item.description}</p>
+                      {item.groups.map((group) => (
+                        <div className="mobile-mega-group" key={group.title}>
+                          <h4>{group.title}</h4>
+                          {group.items.map((link) => (
+                            <Link to={link.to} className="mobile-submenu-link" key={`${group.title}-${link.label}`}>
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                      <Link to={item.ctaTo} className="mobile-mega-cta">
+                        {item.cta} <ArrowRight size={15} />
+                      </Link>
+                    </>
+                  )}
                 </div>
               )}
             </div>
           ))}
           <div className="mobile-menu-actions">
-            <Link to="/login" className="btn btn-secondary">Register school</Link>
             <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
           </div>
         </div>

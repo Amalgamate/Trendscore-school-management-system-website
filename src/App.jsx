@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Coins, GraduationCap, Users } from 'lucide-react';
 import PageLayout from './components/PageLayout';
 
 // Core Pages
@@ -30,6 +31,43 @@ const About = () => (
           TrendScore was founded by a team of educators and software engineers who experienced first-hand how
           broken school administration was in Kenya. We set out to build the ERP we always wished existed.
         </p>
+      </div>
+    </section>
+
+    {/* School Challenges */}
+    <section className="section">
+      <div className="container">
+        <div className="section-header">
+          <span className="badge badge-teal">The Challenges</span>
+          <h2>Where Your Software Fails.</h2>
+          <p>Most tools were built as simple databases, failing to solve the complex needs of modern Competency-Based Education (CBE) and finance control.</p>
+        </div>
+
+        <div className="challenges-grid">
+          <div className="challenge-card">
+            <div className="challenge-icon">
+              <GraduationCap size={24} />
+            </div>
+            <h3>Academic & CBE Chaos</h3>
+            <p>Manual grading and spreadsheets turn CBE assessments (rubrics, portfolios, EE/ME scores) into a bureaucratic nightmare for teachers.</p>
+          </div>
+
+          <div className="challenge-card">
+            <div className="challenge-icon">
+              <Coins size={24} />
+            </div>
+            <h3>Leaking Fee Revenues</h3>
+            <p>Without live M-Pesa reconciliation, school directors struggle to audit billing balances and arrears collections.</p>
+          </div>
+
+          <div className="challenge-card">
+            <div className="challenge-icon">
+              <Users size={24} />
+            </div>
+            <h3>Disengaged Parents</h3>
+            <p>Parents are left in the dark when results are shared months late and fee statements require physical receipt pickups at school offices.</p>
+          </div>
+        </div>
       </div>
     </section>
 
