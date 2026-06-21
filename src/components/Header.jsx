@@ -15,7 +15,9 @@ import {
   GraduationCap,
   Library,
   Menu,
+  MessageCircle,
   MessageSquare,
+  Phone,
   Presentation,
   Route,
   ShieldCheck,
@@ -247,6 +249,8 @@ const navItems = [
 
 const renderIcon = (Icon, size = 18) => <Icon size={size} />;
 const assetUrl = (path) => encodeURI(path);
+const phoneHref = 'tel:0713612141';
+const whatsappHref = 'https://wa.me/254713612141';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -365,6 +369,12 @@ const Header = () => {
         </nav>
 
         <div className="nav-actions">
+          <a href={whatsappHref} className="nav-contact-action nav-contact-whatsapp" aria-label="Chat on WhatsApp">
+            <MessageCircle size={18} />
+          </a>
+          <a href={phoneHref} className="nav-contact-action" aria-label="Call 0713612141">
+            <Phone size={18} />
+          </a>
           <Link to="/book-demo" className="btn btn-primary btn-nav-demo">
             Book Demo <ArrowRight size={16} />
           </Link>
@@ -428,6 +438,12 @@ const Header = () => {
             </div>
           ))}
           <div className="mobile-menu-actions">
+            <a href={whatsappHref} className="btn btn-secondary mobile-contact-btn">
+              <MessageCircle size={17} /> WhatsApp Chat
+            </a>
+            <a href={phoneHref} className="btn btn-secondary mobile-contact-btn">
+              <Phone size={17} /> Call 0713612141
+            </a>
             <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
           </div>
         </div>

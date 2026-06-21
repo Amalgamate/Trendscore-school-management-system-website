@@ -2799,3 +2799,241 @@ input:checked + .toggle-slider:before {
     height: 11px;
   }
 }
+
+/* Landing page tablet/mobile fit polish */
+@media (max-width: 1024px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.85rem, 4vw, 2.4rem);
+    line-height: 1.16;
+  }
+
+  .hero-slide-content {
+    grid-template-columns: 42% 58%;
+  }
+
+  .hero-slide,
+  .hero-slide-content,
+  .hero-visual,
+  .hero-slide-image {
+    min-height: 560px;
+  }
+
+  .hero-content {
+    padding-left: 32px;
+  }
+
+  .hero-slide-image {
+    object-position: 70% center;
+  }
+
+  .hero-image-fade-side {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.7) 16%,
+      rgba(255,255,255,0.22) 34%,
+      rgba(255,255,255,0) 54%
+    );
+  }
+
+  .platform-hero-section,
+  .platform-hero-overlay {
+    min-height: 440px;
+  }
+
+  .cbe-section {
+    min-height: auto;
+  }
+
+  .cbe-text-col {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .hero-slider-section {
+    padding-top: var(--header-height);
+  }
+
+  .hero-slide-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-slide,
+  .hero-slide-content {
+    min-height: auto;
+  }
+
+  .hero-content {
+    order: 1;
+    padding: 28px 20px 18px;
+  }
+
+  .hero-visual {
+    order: 2;
+    min-height: 330px;
+  }
+
+  .hero-slide-image {
+    min-height: 330px;
+    object-position: center top;
+  }
+
+  .hero-image-fade-side {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.24) 28%,
+      rgba(255,255,255,0) 58%
+    );
+  }
+
+  .hero-image-fade-bottom {
+    background: linear-gradient(0deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 34%);
+  }
+
+  .hero-title {
+    max-width: none;
+  }
+
+  .hero-subtitle {
+    line-height: 1.5;
+  }
+
+  .hero-feature-chip {
+    box-shadow: none;
+    background: #ffffff;
+  }
+
+  .integrations-box {
+    padding: 30px 16px;
+    border-radius: 18px;
+  }
+
+  .integrations-grid {
+    grid-template-columns: repeat(4, minmax(68px, 1fr));
+    gap: 10px 0;
+  }
+
+  .integration-item {
+    max-width: none;
+    min-height: 70px;
+    padding: 4px 6px;
+  }
+
+  .integration-item::after {
+    display: none;
+  }
+
+  .trusted-section {
+    padding: 38px 0 !important;
+  }
+
+  .school-marquee-item {
+    min-width: max-content;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .section-header p {
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .hero-content {
+    padding: 24px 16px 16px;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+    line-height: 1.12;
+    margin-bottom: 14px;
+  }
+
+  .hero-slide-eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .hero-visual,
+  .hero-slide-image {
+    min-height: 300px;
+  }
+
+  .hero-buttons .btn {
+    min-height: 46px;
+    padding: 12px 14px;
+  }
+
+  .hero-slider-arrow {
+    bottom: 18px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-slider-arrow-left {
+    left: 14px;
+  }
+
+  .hero-slider-arrow-right {
+    right: 14px;
+  }
+
+  .hero-slider-dots {
+    bottom: 18px;
+  }
+
+  .integrations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 16px;
+  }
+
+  .integration-logo-img,
+  .integration-logo-icon {
+    height: 32px;
+    width: 32px;
+  }
+
+  .integration-logo-img {
+    width: auto;
+  }
+
+  .platform-hero-section,
+  .platform-hero-overlay {
+    min-height: 360px;
+  }
+}
