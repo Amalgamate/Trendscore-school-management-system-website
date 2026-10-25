@@ -117,17 +117,13 @@ const Home = () => {
           >
             <div className="hero-slide-eyebrow">
               <span className="badge badge-orange" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Sparkles size={14} /> Modular School ERP
+                <Sparkles size={14} /> The Modular School ERP
               </span>
             </div>
 
             <h1 className="hero-title">
-              Manage Your Entire School in One Modular Platform.
+              Your Whole School Under One Roof.
             </h1>
-
-            <p className="hero-subtitle" style={{ fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-secondary)', maxWidth: '540px' }}>
-              TrendScore is Kenya’s all-in-one modular school management platform built to streamline every aspect of your institution. From CBC and CBE assessment rubrics to automated M-Pesa fee collection, admissions, and timetabling, every department works together in real time. Empower your teachers, engage parents, and give school directors complete operational clarity without the paperwork chaos.
-            </p>
 
             <div className="hero-buttons">
               <Link to="/book-demo" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '1rem', fontWeight: 600 }}>
@@ -210,31 +206,40 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Centered Intro Statement Section */}
+      <section className="section intro-statement-section" style={{ backgroundColor: '#F8FAFC', padding: '90px 0', borderBottom: '1px solid #E2E8F0' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '840px' }}>
+          <motion.div {...fadeUp}>
+            <span className="badge badge-teal" style={{ marginBottom: '18px' }}>
+              Kenya's Leading School ERP
+            </span>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 3.5vw, 2.85rem)',
+              fontWeight: 800,
+              color: '#0F172A',
+              letterSpacing: '-0.025em',
+              lineHeight: 1.25,
+              marginBottom: '22px'
+            }}>
+              Meet The Most Intuitive School Management System
+            </h2>
+            <p style={{
+              fontSize: '1.15rem',
+              lineHeight: 1.8,
+              color: '#475569',
+              margin: '0 auto',
+              maxWidth: '780px'
+            }}>
+              TrendScore is Kenya’s all-in-one modular school management platform built to streamline every aspect of your institution. From CBC and CBE assessment rubrics to automated M-Pesa fee collection, admissions, and timetabling, every department works together in real time. Empower your teachers, engage parents, and give school directors complete operational clarity without the paperwork chaos.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 8 Modules Platform Section (Directly Below Hero - 2 Column Layout with Fancy Module Pills) */}
       <section className="modules-overview-section" id="modules">
         {/* Subtle top-right organic sky-blue corner shape matching slide mockup */}
         <div className="modules-corner-top-decor" aria-hidden="true" />
-
-        {/* Dual swoosh bottom-left wave graphic (Orange & Dark Teal) */}
-        <svg
-          className="modules-corner-wave"
-          viewBox="0 0 320 180"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          {/* Deep dark teal base swoop */}
-          <path
-            d="M0 135 C70 148 135 158 260 180 H0 V135 Z"
-            fill="#073B45"
-          />
-          {/* Bright brand orange swoop */}
-          <path
-            d="M0 90 C85 96 160 126 295 180 C260 180 195 170 135 160 C70 148 20 135 0 120 V90 Z"
-            fill="#F97316"
-          />
-        </svg>
 
         <div className="container modules-container">
           <div className="modules-overview-grid">
