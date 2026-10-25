@@ -13,6 +13,7 @@ import PortalTemplate from './pages/PortalTemplate';
 import SolutionTemplate from './pages/SolutionTemplate';
 import CompareTemplate from './pages/CompareTemplate';
 import ResourcePages from './pages/ResourcePages';
+import BecomeAnAgent from './pages/BecomeAnAgent';
 
 // Basic Static Pages
 const About = () => (
@@ -209,6 +210,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/book-demo" element={<BookDemo />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/become-an-agent" element={<BecomeAnAgent />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Navigate to="/register" replace />} />
           <Route path="/privacy" element={<Privacy />} />

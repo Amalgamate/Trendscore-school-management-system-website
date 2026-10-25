@@ -32,6 +32,7 @@ const navItems = [
   {
     key: 'platform',
     label: 'About',
+    to: '/about',
     noDropdown: true,
     title: 'Assessment & Intelligence',
     description: 'Transform assessment data into actionable learner growth insights.',
@@ -102,6 +103,12 @@ const navItems = [
       { label: 'Inventory', to: '/modules/inventory', icon: Store },
       { label: 'Discipline', to: '/modules/discipline', icon: ShieldCheck }
     ]
+  },
+  {
+    key: 'become-an-agent',
+    label: 'Become an Agent',
+    to: '/become-an-agent',
+    noDropdown: true
   },
   {
     key: 'digital-campus',
@@ -293,18 +300,27 @@ const Header = () => {
           <ul className="nav-menu">
             {navItems.map((item) => (
               <li
-                className={`nav-item nav-item-has-mega ${item.comingSoon ? 'nav-item-coming-soon' : ''}`}
+                className={`nav-item ${item.to && location.pathname === item.to ? 'active' : ''} ${!item.to ? 'nav-item-has-mega' : ''} ${item.comingSoon ? 'nav-item-coming-soon' : ''}`}
                 key={item.key}
               >
-                <button
-                  type="button"
-                  className="nav-link nav-link-button"
-                  aria-disabled={item.comingSoon ? 'true' : undefined}
-                >
-                  {item.label} {!item.noDropdown && <ChevronDown size={14} />}
-                </button>
+                {item.to ? (
+                  <Link
+                    to={item.to}
+                    className="nav-link"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="nav-link nav-link-button"
+                    aria-disabled={item.comingSoon ? 'true' : undefined}
+                  >
+                    {item.label} {!item.noDropdown && <ChevronDown size={14} />}
+                  </button>
+                )}
                 {item.comingSoon && <span className="nav-coming-soon-label">Coming soon</span>}
-                {!item.noDropdown && !item.comingSoon && item.menuType === 'simple' && (
+                {!item.to && !item.noDropdown && !item.comingSoon && item.menuType === 'simple' && (
                   <div className="simple-dropdown">
                     {item.items.map((link) => (
                       <Link to={link.to} className="simple-dropdown-link" key={link.label}>
@@ -314,7 +330,7 @@ const Header = () => {
                     ))}
                   </div>
                 )}
-                {!item.noDropdown && !item.comingSoon && item.menuType !== 'simple' && (
+                {!item.to && !item.noDropdown && !item.comingSoon && item.menuType !== 'simple' && (
                   <div className="mega-menu ecosystem-mega-menu">
                     <div className="mega-menu-main">
                       <div className="mega-menu-intro">
@@ -389,23 +405,34 @@ const Header = () => {
         <div className="mobile-menu-panel">
           {navItems.map((item) => (
             <div className="mobile-menu-item" key={item.key}>
-              <button
-                className={`mobile-menu-title-btn ${item.comingSoon ? 'mobile-menu-title-disabled' : ''}`}
-                onClick={() => {
-                  if (!item.comingSoon && !item.noDropdown) {
-                    toggleMobileSub(item.key);
-                  }
-                }}
-                aria-disabled={item.comingSoon ? 'true' : undefined}
-              >
-                {item.label}
-                {item.comingSoon ? (
-                  <span className="mobile-coming-soon-label">Coming soon</span>
-                ) : item.noDropdown ? null : (
-                  <ChevronDown size={18} style={{ transform: activeMobileSub === item.key ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-                )}
-              </button>
-              {!item.noDropdown && !item.comingSoon && activeMobileSub === item.key && (
+              {item.to ? (
+                <Link
+                  to={item.to}
+                  className="mobile-menu-title-btn"
+                  onClick={() => setMobileOpen(false)}
+                  style={{ textDecoration: 'none' }}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  className={`mobile-menu-title-btn ${item.comingSoon ? 'mobile-menu-title-disabled' : ''}`}
+                  onClick={() => {
+                    if (!item.comingSoon && !item.noDropdown) {
+                      toggleMobileSub(item.key);
+                    }
+                  }}
+                  aria-disabled={item.comingSoon ? 'true' : undefined}
+                >
+                  {item.label}
+                  {item.comingSoon ? (
+                    <span className="mobile-coming-soon-label">Coming soon</span>
+                  ) : item.noDropdown ? null : (
+                    <ChevronDown size={18} style={{ transform: activeMobileSub === item.key ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+                  )}
+                </button>
+              )}
+              {!item.to && !item.noDropdown && !item.comingSoon && activeMobileSub === item.key && (
                 <div className="mobile-menu-submenu mobile-ecosystem-submenu">
                   {item.menuType === 'simple' ? (
                     <div className="mobile-mega-group">
@@ -438,13 +465,21 @@ const Header = () => {
             </div>
           ))}
           <div className="mobile-menu-actions">
+            <Link
+              to="/become-an-agent"
+              className="btn btn-secondary mobile-contact-btn"
+              onClick={() => setMobileOpen(false)}
+              style={{ borderColor: 'var(--color-orange)', color: 'var(--color-orange)', fontWeight: 600 }}
+            >
+              <BriefcaseBusiness size={17} /> Become an Agent
+            </Link>
             <a href={whatsappHref} className="btn btn-secondary mobile-contact-btn">
               <MessageCircle size={17} /> WhatsApp Chat
             </a>
             <a href={phoneHref} className="btn btn-secondary mobile-contact-btn">
               <Phone size={17} /> Call 0713612141
             </a>
-            <Link to="/book-demo" className="btn btn-primary">Book Demo</Link>
+            <Link to="/book-demo" className="btn btn-primary" onClick={() => setMobileOpen(false)}>Book Demo</Link>
           </div>
         </div>
       )}

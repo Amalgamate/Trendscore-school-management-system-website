@@ -3127,4 +3127,9 @@ input:checked + .toggle-slider:before {
   .platform-hero-overlay {
     min-height: 360px;
   }
+
+  .interactive-portals-image-overlay,
+  .interactive-portals-lightbox {
+    display: none;
+  }
 }

@@ -66,6 +66,7 @@ const Footer = () => {
               <li><Link to="/compare/vs-multiple" className="footer-link">vs Multiple Apps</Link></li>
               <li><Link to="/pricing" className="footer-link">Packages</Link></li>
               <li><Link to="/about" className="footer-link">About TrendScore</Link></li>
+              <li><Link to="/become-an-agent" className="footer-link">Become an Agent</Link></li>
             </ul>
           </div>
 
@@ -86,8 +87,9 @@ const Footer = () => {
                 <span>Delta Corner, Westlands, Nairobi, Kenya</span>
               </li>
             </ul>
-            <h3>Resources</h3>
+            <h3>Resources & Partners</h3>
             <ul className="footer-links">
+              <li><Link to="/become-an-agent" className="footer-link" style={{ color: '#F97316', fontWeight: 600 }}>Become an Agent</Link></li>
               <li><Link to="/resources/blog" className="footer-link">Blog Articles</Link></li>
               <li><Link to="/resources/guides" className="footer-link">E-Books & Guides</Link></li>
               <li><Link to="/resources/docs" className="footer-link">Documentation</Link></li>
