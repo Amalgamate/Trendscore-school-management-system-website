@@ -42,8 +42,8 @@ const navItems = [
     noDropdown: true
   },
   {
-    key: 'features',
-    label: 'Features',
+    key: 'modules',
+    label: 'Modules',
     menuType: 'simple',
     items: [
       { label: 'Academics Management', to: '/features/academics', icon: BookOpen },
