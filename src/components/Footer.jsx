@@ -55,22 +55,22 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Comparison Pages */}
+          {/* Column 3: Resources & Partners */}
           <div className="footer-column">
-            <h3>Compare</h3>
+            <h3>Resources & Partners</h3>
             <ul className="footer-links">
-              <li><Link to="/compare/why-switch" className="footer-link">Why Switch</Link></li>
-              <li><Link to="/compare/vs-manual" className="footer-link">vs Manual Processes</Link></li>
-              <li><Link to="/compare/vs-legacy" className="footer-link">vs Legacy Systems</Link></li>
-              <li><Link to="/compare/vs-spreadsheet" className="footer-link">vs Spreadsheets</Link></li>
-              <li><Link to="/compare/vs-multiple" className="footer-link">vs Multiple Apps</Link></li>
-              <li><Link to="/pricing" className="footer-link">Packages</Link></li>
+              <li><Link to="/become-an-agent" className="footer-link" style={{ color: '#F97316', fontWeight: 600 }}>Become an Agent</Link></li>
+              <li><a href="https://admin.trendscore.co.ke/" target="_blank" rel="noopener noreferrer" className="footer-link">Partner Portal</a></li>
+              <li><Link to="/pricing" className="footer-link">Pricing Packages</Link></li>
               <li><Link to="/about" className="footer-link">About TrendScore</Link></li>
-              <li><Link to="/become-an-agent" className="footer-link">Become an Agent</Link></li>
+              <li><Link to="/resources/blog" className="footer-link">Blog Articles</Link></li>
+              <li><Link to="/resources/guides" className="footer-link">E-Books & Guides</Link></li>
+              <li><Link to="/resources/docs" className="footer-link">Documentation</Link></li>
+              <li><Link to="/resources/faq" className="footer-link">Support & FAQ</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Resources */}
+          {/* Column 4: Contact Us */}
           <div className="footer-column">
             <h3>Contact Us</h3>
             <ul className="footer-links" style={{ gap: '16px', marginBottom: '24px' }}>
@@ -87,14 +87,11 @@ const Footer = () => {
                 <span>Delta Corner, Westlands, Nairobi, Kenya</span>
               </li>
             </ul>
-            <h3>Resources & Partners</h3>
-            <ul className="footer-links">
-              <li><Link to="/become-an-agent" className="footer-link" style={{ color: '#F97316', fontWeight: 600 }}>Become an Agent</Link></li>
-              <li><Link to="/resources/blog" className="footer-link">Blog Articles</Link></li>
-              <li><Link to="/resources/guides" className="footer-link">E-Books & Guides</Link></li>
-              <li><Link to="/resources/docs" className="footer-link">Documentation</Link></li>
-              <li><Link to="/resources/faq" className="footer-link">Support & FAQ</Link></li>
-            </ul>
+            <div style={{ marginTop: '16px' }}>
+              <Link to="/book-demo" className="btn btn-primary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
+                Book Demo
+              </Link>
+            </div>
           </div>
         </div>
 
