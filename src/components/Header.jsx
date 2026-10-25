@@ -30,6 +30,12 @@ import {
 
 const navItems = [
   {
+    key: 'home',
+    label: 'Home',
+    to: '/',
+    noDropdown: true
+  },
+  {
     key: 'about',
     label: 'About',
     to: '/about',
