@@ -1,100 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Bell, Brain, Check, ChevronLeft, ChevronRight,
-  ClipboardCheck, Cloud, Coins, FileText, Monitor,
-  Play, Route, ShieldCheck, Sparkles, Target, Trophy, Users,
-  MessageSquare, BarChart3, Video
+  ArrowRight, Check, Coins, GraduationCap, ShieldCheck, Sparkles, Users, MessageSquare, Video
 } from 'lucide-react';
 import InteractivePortals from '../components/InteractivePortals';
 import CBECompetencyCard from '../components/CBECompetencyCard';
 import SeniorSchoolPathways from '../components/SeniorSchoolPathways';
-import { heroSlides } from '../data/heroSlides';
 
 const Home = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [heroPaused, setHeroPaused] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
-  const currentSlide = heroSlides[activeSlide];
-
-  const heroIconMap = {
-    barChart: BarChart3,
-    brain: Brain,
-    shield: ShieldCheck,
-    cloud: Cloud,
-    users: Users,
-    coins: Coins,
-    file: FileText,
-    bell: Bell,
-    monitor: Monitor,
-    clipboard: ClipboardCheck,
-    check: Check,
-    sparkles: Sparkles,
-    target: Target,
-    route: Route,
-    trophy: Trophy
-  };
-
-  const goToSlide = (index) => {
-    setActiveSlide((index + heroSlides.length) % heroSlides.length);
-  };
-
-  const goToNextSlide = () => goToSlide(activeSlide + 1);
-  const goToPreviousSlide = () => goToSlide(activeSlide - 1);
-
-  useEffect(() => {
-    if (heroPaused) return undefined;
-
-    const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 6000);
-
-    return () => window.clearInterval(timer);
-  }, [heroPaused]);
-
-  const handleHeroKeyDown = (event) => {
-    if (event.key === 'ArrowRight') {
-      goToNextSlide();
-    }
-
-    if (event.key === 'ArrowLeft') {
-      goToPreviousSlide();
-    }
-  };
-
-  const handleTouchEnd = (event) => {
-    if (touchStartX === null) return;
-
-    const distance = touchStartX - event.changedTouches[0].clientX;
-
-    if (Math.abs(distance) > 50) {
-      if (distance > 0) {
-        goToNextSlide();
-      } else {
-        goToPreviousSlide();
-      }
-    }
-
-    setTouchStartX(null);
-  };
-
   // Animation presets
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: '-100px' },
     transition: { duration: 0.6 }
-  };
-
-  const staggerContainer = {
-    initial: {},
-    whileInView: { transition: { staggerChildren: 0.1 } },
-    viewport: { once: true, margin: '-100px' }
-  };
-
-  const cardHover = {
-    whileHover: { y: -5, boxShadow: 'var(--shadow-lg)' }
   };
 
   const row1Schools = [
@@ -117,144 +37,107 @@ const Home = () => {
 
   return (
     <div className="home-wrapper">
-      {/* 2. Hero Section */}
-      <section
-        className="hero-section hero-slider-section"
-        tabIndex={0}
-        onKeyDown={handleHeroKeyDown}
-        onMouseEnter={() => setHeroPaused(true)}
-        onMouseLeave={() => setHeroPaused(false)}
-        onTouchStart={(event) => setTouchStartX(event.touches[0].clientX)}
-        onTouchEnd={handleTouchEnd}
-        aria-label="TrendSCORE stakeholder slider"
-      >
-        <AnimatePresence mode="wait">
+      {/* 2. Hero Section - Static, Clean, Clear Single Image */}
+      <section className="hero-section hero-slider-section" style={{ background: '#FFFFFF' }}>
+        <div className="hero-slide-content">
           <motion.div
-            className={`hero-slide hero-slide-${currentSlide.id}`}
-            key={currentSlide.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
+            className="hero-content"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="hero-slide-content">
-              <motion.div
-                className="hero-content"
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="hero-slide-eyebrow">
-                  <span>{currentSlide.badge}</span>
-                  <strong>{currentSlide.role}</strong>
-                </div>
-                <h1 className="hero-title">
-                  {currentSlide.title.split(' ').map((word, index) => (
-                    <span className="hero-title-word" key={`${word}-${index}`}>{word} </span>
-                  ))}
-                </h1>
-                <p className="hero-subtitle">
-                  {currentSlide.description}
-                </p>
+            <div className="hero-slide-eyebrow">
+              <span className="badge badge-orange" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Sparkles size={14} /> Modular School ERP
+              </span>
+            </div>
 
-                <motion.div
-                  className="hero-chip-row"
-                  initial="hidden"
-                  animate="visible"
-                  variants={{
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.08 } }
-                  }}
-                >
-                  {currentSlide.chips.map((chip) => (
-                    <motion.div
-                      className="hero-feature-chip"
-                      key={chip}
-                      variants={{
-                        hidden: { opacity: 0, y: 12 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                    >
-                      <Check size={17} />
-                      <span>{chip}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
+            <h1 className="hero-title">
+              Manage Your Entire School in One Modular Platform.
+            </h1>
 
-                <div className="hero-buttons">
-                  <Link to="/book-demo" className="btn btn-primary">
-                    Book Free Demo <ArrowRight size={16} />
-                  </Link>
-                  <a href="#tour" className="btn btn-secondary hero-secondary-cta">
-                    <Play size={16} fill="currentColor" /> {currentSlide.secondaryCta}
-                  </a>
-                </div>
-              </motion.div>
+            <p className="hero-subtitle" style={{ fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-secondary)', maxWidth: '540px' }}>
+              TrendScore is Kenya’s all-in-one modular school management platform built to streamline every aspect of your institution. From CBC and CBE assessment rubrics to automated M-Pesa fee collection, admissions, and timetabling, every department works together in real time. Empower your teachers, engage parents, and give school directors complete operational clarity without the paperwork chaos.
+            </p>
 
-              <motion.div
-                className="hero-visual"
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7 }}
-              >
-                <img src={currentSlide.image} alt={`${currentSlide.role} using TrendSCORE`} className="hero-slide-image" />
-                <div className="hero-image-fade hero-image-fade-side" />
-                <div className="hero-image-fade hero-image-fade-bottom" />
+            <div className="hero-buttons">
+              <Link to="/book-demo" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '1rem', fontWeight: 600 }}>
+                Book Free Demo <ArrowRight size={17} />
+              </Link>
+              <Link to="/features/academics" className="btn btn-secondary hero-secondary-cta" style={{ padding: '13px 24px', fontSize: '1rem' }}>
+                Explore Modules
+              </Link>
+            </div>
 
-                <motion.div
-                  className="hero-floating-cards"
-                  initial="hidden"
-                  animate="visible"
-                  variants={{
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.12 } }
-                  }}
-                >
-                  {currentSlide.floatingCards.map((card, index) => {
-                    const Icon = heroIconMap[card.icon] || Sparkles;
-
-                    return (
-                      <motion.div
-                        className={`hero-floating-card hero-floating-card-${index + 1}`}
-                        key={card.title}
-                        variants={{
-                          hidden: { opacity: 0, y: 18, scale: 0.96 },
-                          visible: { opacity: 1, y: 0, scale: 1 }
-                        }}
-                      >
-                        <span className="hero-floating-icon">
-                          <Icon size={22} />
-                        </span>
-                        <span>
-                          <strong>{card.title}</strong>
-                          {card.description && <small>{card.description}</small>}
-                        </span>
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              </motion.div>
+            <div
+              style={{
+                display: 'flex',
+                gap: '18px',
+                flexWrap: 'wrap',
+                marginTop: '28px',
+                fontSize: '0.86rem',
+                color: 'var(--color-teal)',
+                fontWeight: 600
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Check size={16} style={{ color: 'var(--color-green)' }} /> 100% CBC & CBE Compliant
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Check size={16} style={{ color: 'var(--color-green)' }} /> Live M-Pesa Fee Sync
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Check size={16} style={{ color: 'var(--color-green)' }} /> 500+ Schools Managed
+              </div>
             </div>
           </motion.div>
-        </AnimatePresence>
 
-        <button type="button" className="hero-slider-arrow hero-slider-arrow-left" onClick={goToPreviousSlide} aria-label="Previous slide">
-          <ChevronLeft size={24} />
-        </button>
-        <button type="button" className="hero-slider-arrow hero-slider-arrow-right" onClick={goToNextSlide} aria-label="Next slide">
-          <ChevronRight size={24} />
-        </button>
-
-        <div className="hero-slider-dots" aria-label="Hero slide navigation">
-          {heroSlides.map((slide, index) => (
-            <button
-              type="button"
-              className={`hero-slider-dot ${index === activeSlide ? 'is-active' : ''}`}
-              key={slide.id}
-              onClick={() => goToSlide(index)}
-              aria-label={`Show ${slide.role} slide`}
+          <motion.div
+            className="hero-visual"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <img
+              src="/slider/teacher.png"
+              alt="Teacher using TrendScore School Management Platform"
+              className="hero-slide-image"
             />
-          ))}
+            <div className="hero-image-fade hero-image-fade-side" />
+            <div className="hero-image-fade hero-image-fade-bottom" />
+
+            <div className="hero-floating-cards">
+              <div className="hero-floating-card hero-floating-card-1">
+                <span className="hero-floating-icon" style={{ background: 'rgba(249, 115, 22, 0.12)', color: 'var(--color-orange)' }}>
+                  <GraduationCap size={22} />
+                </span>
+                <span>
+                  <strong>CBE Assessments</strong>
+                  <small>Rubric grading in minutes</small>
+                </span>
+              </div>
+
+              <div className="hero-floating-card hero-floating-card-2">
+                <span className="hero-floating-icon" style={{ background: 'rgba(34, 197, 94, 0.12)', color: '#22c55e' }}>
+                  <Coins size={22} />
+                </span>
+                <span>
+                  <strong>M-Pesa Fee Sync</strong>
+                  <small>Real-time receipts & logs</small>
+                </span>
+              </div>
+
+              <div className="hero-floating-card hero-floating-card-3">
+                <span className="hero-floating-icon" style={{ background: 'rgba(15, 76, 92, 0.12)', color: 'var(--color-teal)' }}>
+                  <Users size={22} />
+                </span>
+                <span>
+                  <strong>Connected Portals</strong>
+                  <small>Teachers, parents & learners</small>
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

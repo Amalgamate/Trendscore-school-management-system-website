@@ -20,7 +20,7 @@
 
 .hero-slide-content {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 48% 52%;
   align-items: stretch;
   width: 100%;
 }
