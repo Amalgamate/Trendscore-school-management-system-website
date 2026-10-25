@@ -30,62 +30,13 @@ import {
 
 const navItems = [
   {
-    key: 'platform',
+    key: 'about',
     label: 'About',
     to: '/about',
-    noDropdown: true,
-    title: 'Assessment & Intelligence',
-    description: 'Transform assessment data into actionable learner growth insights.',
-    cta: 'Explore Assessment Platform',
-    ctaTo: '/features/assessment',
-    accent: 'Assessment intelligence',
-    visual: 'Learner growth, CBC reports, pathways, and risk alerts in one analytics layer.',
-    image: '/marketing-teacher-cbe-assessment-v1.jpg',
-    imageAlt: 'Assessment intelligence dashboard preview',
-    icon: Brain,
-    groups: [
-      {
-        title: 'Assessment',
-        items: [
-          { label: 'CBC Assessment', to: '/features/assessment', icon: GraduationCap },
-          { label: 'Junior School Assessment', to: '/solutions/junior', icon: ClipboardCheck },
-          { label: 'Senior School Assessment', to: '/solutions/senior', icon: Presentation },
-          { label: 'Assessment Builder', to: '/features/assessment', icon: FileText },
-          { label: 'Rubric Generator', to: '/features/assessment', icon: Sparkles }
-        ]
-      },
-      {
-        title: 'Analytics',
-        items: [
-          { label: 'Learner Growth Tracking', to: '/features/analytics', icon: BarChart3 },
-          { label: 'School Performance Analytics', to: '/features/analytics', icon: Brain },
-          { label: 'Competency Dashboards', to: '/features/analytics', icon: ShieldCheck },
-          { label: 'Risk Learner Detection', to: '/features/analytics', icon: ShieldCheck },
-          { label: 'Intervention Tracking', to: '/features/analytics', icon: Route }
-        ]
-      },
-      {
-        title: 'Career Pathways',
-        items: [
-          { label: 'Senior School Pathways', to: '/solutions/senior', icon: Route },
-          { label: 'Subject Combination Validation', to: '/solutions/senior', icon: ClipboardCheck },
-          { label: 'Career Recommendations', to: '/solutions/senior', icon: Sparkles },
-          { label: 'Pathway Analytics', to: '/features/analytics', icon: BarChart3 }
-        ]
-      },
-      {
-        title: 'Free Tools',
-        items: [
-          { label: 'Free CBC Reports', to: '/resources/guides', icon: FileText },
-          { label: 'Free Assessment Templates', to: '/resources/guides', icon: ClipboardCheck },
-          { label: 'Free Analytics Dashboard', to: '/resources/docs', icon: BarChart3 },
-          { label: 'Free School Readiness Tools', to: '/resources/faq', icon: ShieldCheck }
-        ]
-      }
-    ]
+    noDropdown: true
   },
   {
-    key: 'solutions',
+    key: 'features',
     label: 'Features',
     menuType: 'simple',
     items: [
@@ -105,152 +56,22 @@ const navItems = [
     ]
   },
   {
+    key: 'pricing',
+    label: 'Pricing',
+    to: '/pricing',
+    noDropdown: true
+  },
+  {
     key: 'become-an-agent',
     label: 'Become an Agent',
     to: '/become-an-agent',
     noDropdown: true
   },
   {
-    key: 'digital-campus',
-    label: 'Digital Campus',
-    comingSoon: true,
-    title: 'Learning Without Limits',
-    description: 'Connect learners, teachers, and parents through one digital campus.',
-    cta: 'Explore Digital Campus',
-    ctaTo: '/portals/learner',
-    accent: 'One campus for every stakeholder',
-    visual: 'Learners, teachers, parents, and school leaders share progress in real time.',
-    image: '/mega menu/digital campus.png',
-    imageAlt: 'Digital campus illustration',
-    icon: Cloud,
-    groups: [
-      {
-        title: 'Learning',
-        items: [
-          { label: 'Learner Portal', to: '/portals/learner', icon: GraduationCap },
-          { label: 'Teacher Portal', to: '/portals/teacher', icon: Users },
-          { label: 'Parent Portal', to: '/portals/parent', icon: Users }
-        ]
-      },
-      {
-        title: 'Classroom',
-        items: [
-          { label: 'Assignments', to: '/portals/learner', icon: ClipboardCheck },
-          { label: 'Live Classes', to: '/portals/teacher', icon: Video },
-          { label: 'Assessments', to: '/features/assessment', icon: FileText },
-          { label: 'Discussions', to: '/features/communication', icon: MessageSquare }
-        ]
-      },
-      {
-        title: 'Resources',
-        items: [
-          { label: 'Digital Library', to: '/modules/library', icon: Library },
-          { label: 'Notes', to: '/resources/guides', icon: BookOpen },
-          { label: 'Lessons', to: '/resources/guides', icon: Presentation },
-          { label: 'Revision Materials', to: '/resources/guides', icon: FileText }
-        ]
-      },
-      {
-        title: 'Collaboration',
-        items: [
-          { label: 'Messaging', to: '/features/communication', icon: MessageSquare },
-          { label: 'Notifications', to: '/features/communication', icon: Sparkles },
-          { label: 'Progress Tracking', to: '/features/analytics', icon: BarChart3 }
-        ]
-      }
-    ]
-  },
-  {
-    key: 'content-hub',
-    label: 'Creators Hub',
-    comingSoon: true,
-    title: 'Create • Teach • Earn',
-    description: 'A marketplace where teachers create, sell, and distribute educational content.',
-    cta: 'Join Creators Hub',
-    ctaTo: '/register',
-    accent: 'Teacher creator economy',
-    visual: 'Creators publish CBC resources, track earnings, and distribute content to schools.',
-    image: '/mega menu/create.png',
-    imageAlt: 'Content hub creator illustration',
-    icon: BriefcaseBusiness,
-    groups: [
-      {
-        title: 'Creator Hub',
-        items: [
-          { label: 'Become a Creator', to: '/register', icon: Sparkles },
-          { label: 'Upload Resources', to: '/register', icon: FileText },
-          { label: 'Manage Content', to: '/register', icon: Store }
-        ]
-      },
-      {
-        title: 'Marketplace',
-        items: [
-          { label: 'CBC Resources', to: '/resources/guides', icon: BookOpen },
-          { label: 'Lesson Plans', to: '/resources/guides', icon: Presentation },
-          { label: 'Exams', to: '/resources/guides', icon: ClipboardCheck },
-          { label: 'Schemes of Work', to: '/resources/guides', icon: Calendar },
-          { label: 'Revision Papers', to: '/resources/guides', icon: FileText }
-        ]
-      },
-      {
-        title: 'Earnings',
-        items: [
-          { label: 'Revenue Dashboard', to: '/register', icon: BarChart3 },
-          { label: 'Payouts', to: '/register', icon: Coins },
-          { label: 'Creator Analytics', to: '/features/analytics', icon: Brain }
-        ]
-      },
-      {
-        title: 'Community',
-        items: [
-          { label: 'Featured Creators', to: '/resources/blog', icon: Users },
-          { label: 'Teacher Communities', to: '/resources/blog', icon: MessageSquare },
-          { label: 'Webinars', to: '/resources/blog', icon: Video }
-        ]
-      }
-    ]
-  },
-  {
-    key: 'resources',
-    label: 'Resources',
-    comingSoon: true,
-    title: 'Resources',
-    description: 'Guides, tools, support, and success stories for modern schools.',
-    cta: 'Explore Resources',
-    ctaTo: '/resources/blog',
-    accent: 'Knowledge for every school team',
-    visual: 'Practical resources for school leaders, teachers, parents, and learners.',
-    image: '/mega menu/resources.png',
-    imageAlt: 'Resources hub illustration',
-    icon: FileText,
-    groups: [
-      {
-        title: 'Learning Resources',
-        items: [
-          { label: 'Blog', to: '/resources/blog', icon: FileText },
-          { label: 'Guides', to: '/resources/guides', icon: BookOpen },
-          { label: 'Case Studies', to: '/resources/blog', icon: Presentation },
-          { label: 'School Success Stories', to: '/resources/blog', icon: Sparkles }
-        ]
-      },
-      {
-        title: 'Free Tools',
-        items: [
-          { label: 'CBC Report Generator', to: '/resources/guides', icon: FileText },
-          { label: 'Rubric Builder', to: '/features/assessment', icon: ClipboardCheck },
-          { label: 'Assessment Templates', to: '/resources/guides', icon: Sparkles }
-        ]
-      },
-      {
-        title: 'Support',
-        items: [
-          { label: 'Documentation', to: '/resources/docs', icon: BookOpen },
-          { label: 'Help Center', to: '/resources/faq', icon: ShieldCheck },
-          { label: 'Training Videos', to: '/resources/docs', icon: Video },
-          { label: 'Contact Support', to: '/contact', icon: MessageSquare }
-        ]
-      }
-    ]
+    key: 'contact',
+    label: 'Contact',
+    to: '/contact',
+    noDropdown: true
   }
 ];
 

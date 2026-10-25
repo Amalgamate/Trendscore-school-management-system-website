@@ -7,7 +7,6 @@ import {
   Play, Route, ShieldCheck, Sparkles, Target, Trophy, Users,
   MessageSquare, BarChart3, Video
 } from 'lucide-react';
-import InteractiveDashboard from '../components/InteractiveDashboard';
 import InteractivePortals from '../components/InteractivePortals';
 import CBECompetencyCard from '../components/CBECompetencyCard';
 import SeniorSchoolPathways from '../components/SeniorSchoolPathways';
@@ -338,12 +337,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 11. Analytics Command Center (Dark section) */}
-      <section className="section section-dark">
-        <div className="container">
-          <InteractiveDashboard />
-        </div>
-      </section>
 
       {/* 13. Integrations */}
       <section className="section" style={{ backgroundColor: '#FFFFFF' }}>
