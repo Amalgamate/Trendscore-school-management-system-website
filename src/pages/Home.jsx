@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Check, Coins, GraduationCap, ShieldCheck, Sparkles, Users, MessageSquare, Video
+  ArrowRight, Check, Coins, GraduationCap, ShieldCheck, Sparkles, Users, MessageSquare, Video,
+  UserPlus, ClipboardCheck, Bus, Route, Calendar, Clock, ChevronRight
 } from 'lucide-react';
 import InteractivePortals from '../components/InteractivePortals';
 import CBECompetencyCard from '../components/CBECompetencyCard';
@@ -16,6 +17,74 @@ const Home = () => {
     viewport: { once: true, margin: '-100px' },
     transition: { duration: 0.6 }
   };
+
+  // 8 Core Platform Modules matching slide design
+  const modulesList = [
+    {
+      name: 'Admissions',
+      icon: UserPlus,
+      color: '#0284C7',
+      bgColor: '#F0F9FF',
+      hoverBg: '#E0F2FE',
+      link: '/features/admissions'
+    },
+    {
+      name: 'Assessment',
+      icon: ClipboardCheck,
+      color: '#16A34A',
+      bgColor: '#F0FDF4',
+      hoverBg: '#DCFCE7',
+      link: '/features/assessment'
+    },
+    {
+      name: 'Staff',
+      icon: Users,
+      color: '#7C3AED',
+      bgColor: '#F5F3FF',
+      hoverBg: '#EDE9FE',
+      link: '/features/hr'
+    },
+    {
+      name: 'Fees',
+      icon: Bus,
+      color: '#EA580C',
+      bgColor: '#FFF7ED',
+      hoverBg: '#FFEDD5',
+      link: '/features/finance'
+    },
+    {
+      name: 'Pathways',
+      icon: Route,
+      color: '#0D9488',
+      bgColor: '#F0FDFA',
+      hoverBg: '#CCFBF1',
+      link: '/solutions/senior'
+    },
+    {
+      name: 'Timetable',
+      icon: Calendar,
+      color: '#4F46E5',
+      bgColor: '#EEF2FF',
+      hoverBg: '#E0E7FF',
+      link: '/modules/timetable'
+    },
+    {
+      name: 'Communication',
+      icon: MessageSquare,
+      color: '#E11D48',
+      bgColor: '#FFF1F2',
+      hoverBg: '#FFE4E6',
+      link: '/features/communication'
+    },
+    {
+      name: 'Clock-In',
+      icon: Clock,
+      color: '#D97706',
+      bgColor: '#FFFBEB',
+      hoverBg: '#FEF3C7',
+      link: '/modules/attendance'
+    }
+  ];
 
   const row1Schools = [
     { name: 'MCK Isiolo Highway Academy', logo: 'MH' },
@@ -64,9 +133,9 @@ const Home = () => {
               <Link to="/book-demo" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '1rem', fontWeight: 600 }}>
                 Book Free Demo <ArrowRight size={17} />
               </Link>
-              <Link to="/features/academics" className="btn btn-secondary hero-secondary-cta" style={{ padding: '13px 24px', fontSize: '1rem' }}>
+              <a href="#modules" className="btn btn-secondary hero-secondary-cta" style={{ padding: '13px 24px', fontSize: '1rem' }}>
                 Explore Modules
-              </Link>
+              </a>
             </div>
 
             <div
@@ -141,17 +210,97 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. Full Width Platform Statement */}
-      <section className="platform-hero-section">
-        <div className="platform-hero-overlay">
-          <div className="container">
-            <div className="platform-hero-content">
-              <h2>Make Decisions With <span>Confidence</span></h2>
-              <p>
-                TrendScore gives school leaders a real-time view of academics, finance, attendance,
-                and learner growth all in one place.
+      {/* 8 Modules Platform Section (Directly Below Hero - 2 Column Layout with Fancy Module Pills) */}
+      <section className="modules-overview-section" id="modules">
+        {/* Subtle top-right organic sky-blue corner shape matching slide mockup */}
+        <div className="modules-corner-top-decor" aria-hidden="true" />
+
+        {/* Dual swoosh bottom-left wave graphic (Orange & Dark Teal) */}
+        <svg
+          className="modules-corner-wave"
+          viewBox="0 0 320 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {/* Deep dark teal base swoop */}
+          <path
+            d="M0 135 C70 148 135 158 260 180 H0 V135 Z"
+            fill="#073B45"
+          />
+          {/* Bright brand orange swoop */}
+          <path
+            d="M0 90 C85 96 160 126 295 180 C260 180 195 170 135 160 C70 148 20 135 0 120 V90 Z"
+            fill="#F97316"
+          />
+        </svg>
+
+        <div className="container modules-container">
+          <div className="modules-overview-grid">
+            {/* Left Column: Pill Badge, Kicker, Heading, and Description */}
+            <motion.div className="modules-text-col" {...fadeUp}>
+              <div className="modules-badge-pill">
+                8 MODULES | PLATFORM
+              </div>
+
+              <div className="modules-accent-bar" />
+
+              <div className="modules-kicker">
+                WHAT IS TRENDSCORE
+              </div>
+
+              <h2 className="modules-heading">
+                One Learner Record.<br />
+                Every Workflow <span className="modules-highlight">Connected.</span>
+              </h2>
+
+              <p className="modules-desc">
+                Kenyan schools run on paper registers and disconnected spreadsheets. TrendScore ties admissions, staff, timetable, attendance, assessment, pathways, communication and fees into a single platform – so information flows instead of getting lost.
               </p>
-            </div>
+
+              <div className="modules-cta-row">
+                <Link to="/book-demo" className="btn btn-primary" style={{ padding: '12px 26px', fontSize: '0.98rem' }}>
+                  Book Free Demo <ArrowRight size={16} />
+                </Link>
+                <Link to="/pricing" className="btn btn-secondary" style={{ padding: '12px 24px', fontSize: '0.98rem' }}>
+                  See Pricing Plans
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column: 8 Colorful Rounded Module Pills with Circular Icons */}
+            <motion.div
+              className="modules-list-col"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6 }}
+            >
+              {modulesList.map((mod) => {
+                const IconComponent = mod.icon;
+                return (
+                  <Link
+                    to={mod.link}
+                    key={mod.name}
+                    className="module-pill-item"
+                    style={{
+                      '--mod-color': mod.color,
+                      '--mod-bg': mod.bgColor,
+                      '--mod-hover-bg': mod.hoverBg
+                    }}
+                  >
+                    <div className="module-pill-icon-wrap" style={{ backgroundColor: mod.color }}>
+                      <IconComponent size={22} color="#ffffff" strokeWidth={2.3} />
+                    </div>
+                    <span className="module-pill-title">{mod.name}</span>
+                    <span className="module-pill-arrow">
+                      <ChevronRight size={18} />
+                    </span>
+                  </Link>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </section>
