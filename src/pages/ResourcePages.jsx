@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FileText, Download, HelpCircle, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 
-const ResourcePages = () => {
-  const { id } = useParams();
+const ResourcePages = ({ defaultType }) => {
+  const { id: paramId } = useParams();
+  const id = defaultType || paramId || 'faq';
 
   // Collapsible FAQ state
   const [openFaq, setOpenFaq] = useState({});

@@ -14,6 +14,7 @@ import SolutionTemplate from './pages/SolutionTemplate';
 import CompareTemplate from './pages/CompareTemplate';
 import ResourcePages from './pages/ResourcePages';
 import BecomeAnAgent from './pages/BecomeAnAgent';
+import WhyChooseUs from './pages/WhyChooseUs';
 
 // Basic Static Pages
 const About = () => (
@@ -200,6 +201,34 @@ const Terms = () => (
   </div>
 );
 
+const ComingSoon = ({ title, description }) => (
+  <div style={{ minHeight: '72vh', padding: '160px 24px 80px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F8FAFC' }}>
+    <div style={{ maxWidth: '600px', width: '100%', textAlign: 'center', background: '#FFFFFF', padding: '48px 36px', borderRadius: '24px', border: '1px solid #E2E8F0', boxShadow: '0 12px 36px rgba(15, 23, 42, 0.06)' }}>
+      <span className="badge badge-orange" style={{ marginBottom: '16px', display: 'inline-block' }}>Coming Soon</span>
+      <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', fontWeight: 800, color: 'var(--color-teal)', marginBottom: '16px', lineHeight: 1.2 }}>
+        {title}
+      </h1>
+      <p style={{ fontSize: '1.05rem', color: '#64748B', lineHeight: 1.6, marginBottom: '32px' }}>
+        {description || 'We are crafting dedicated tools, customized workflows, and compliance modules tailored for your school. Stay tuned!'}
+      </p>
+      <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <a
+          href="https://wa.me/254713612141?text=Hello%20TrendScore,%20I%20would%20like%20to%20inquire%20about%20your%20upcoming%20solutions"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+          style={{ padding: '12px 24px' }}
+        >
+          Talk to Us on WhatsApp
+        </a>
+        <a href="/" className="btn btn-secondary" style={{ padding: '12px 24px' }}>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
 function App() {
   return (
     <Router>
@@ -211,6 +240,11 @@ function App() {
           <Route path="/book-demo" element={<BookDemo />} />
           <Route path="/register" element={<Register />} />
           <Route path="/become-an-agent" element={<BecomeAnAgent />} />
+          <Route path="/why-choose-us" element={<WhyChooseUs />} />
+          <Route path="/public-schools" element={<ComingSoon title="Public Schools" description="Dedicated CBE curriculum tracking, NEMIS sync, government capitation budget reports, and bulk SMS features tailored for public institutions." />} />
+          <Route path="/private-schools" element={<ComingSoon title="Private Schools" description="Premium branded apps, automated multi-currency fee management, real-time parent engagement, and boarding management tailored for private academies." />} />
+          <Route path="/faqs" element={<ResourcePages defaultType="faq" />} />
+          <Route path="/docs" element={<ResourcePages defaultType="docs" />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Navigate to="/register" replace />} />
           <Route path="/privacy" element={<Privacy />} />

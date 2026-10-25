@@ -2,14 +2,89 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Check, Coins, GraduationCap, ShieldCheck, Sparkles, Users, MessageSquare, Video,
-  UserPlus, ClipboardCheck, Bus, Route, Calendar, Clock, ChevronRight
+  ArrowRight, Check, Coins, GraduationCap, ShieldCheck, Users, UsersRound, MessageSquare, MessageCircle, Video,
+  UserPlus, UserRoundPlus, UserRound, ClipboardCheck, Bus, Route, Calendar, CalendarDays, CalendarHeart, Clock,
+  ChevronRight, School, Wallet, Laptop, CircleCheck, ReceiptText, Smartphone, Bed, Signpost, BarChart3,
+  BookOpen, Store, BrainCircuit, PlugZap, LayoutGrid,
+  Zap, CreditCard, Receipt, Compass, Bot, Layers, LayoutDashboard, Home as HomeIcon, HeartHandshake,
+  Eye, TrendingUp
 } from 'lucide-react';
 import InteractivePortals from '../components/InteractivePortals';
 import CBECompetencyCard from '../components/CBECompetencyCard';
 import SeniorSchoolPathways from '../components/SeniorSchoolPathways';
 
+// 5 Ecosystem Categories with Modules
+const moduleCategories = [
+  {
+    key: 'operations',
+    name: 'School Operations',
+    labels: 'Admissions · Students · Staff · Timetable',
+    color: '#0284C7',
+    icon: School,
+    modules: [
+      { name: 'Admissions', desc: 'Welcome learners and manage enrolment.', icon: UserPlus, color: '#0284C7', link: '/features/admissions' },
+      { name: 'Student Management', desc: 'Organise learner records and class placement.', icon: GraduationCap, color: '#2563EB', link: '/features/academics' },
+      { name: 'Tutor & Staff Management', desc: 'Manage teachers and teaching duties.', icon: Users, color: '#4F46E5', link: '/features/hr' },
+      { name: 'Attendance & Timetable', desc: 'Track class registers and lesson schedules.', icon: CalendarDays, color: '#0891B2', link: '/modules/timetable' },
+    ]
+  },
+  {
+    key: 'finance',
+    name: 'Finance & Resources',
+    labels: 'Fees · Payments · Expenses',
+    color: '#EA580C',
+    icon: Wallet,
+    modules: [
+      { name: 'Fees Management', desc: 'Manage fee structures, invoices and balances.', icon: CreditCard, color: '#EA580C', link: '/features/finance' },
+      { name: 'Automated Fee Sync', desc: 'Instant M-Pesa reconciliation and receipts.', icon: Zap, color: '#16A34A', link: '/features/finance' },
+      { name: 'Expenses', desc: 'Record and monitor school expenditure.', icon: Receipt, color: '#D97706', link: '/features/finance' },
+      { name: 'Clockin & Timesheets', desc: 'Record staff attendance and work hours.', icon: Clock, color: '#F97316', link: '/modules/attendance' },
+    ]
+  },
+  {
+    key: 'community',
+    name: 'School Community',
+    labels: 'Parents · Communication · Transport',
+    color: '#16A34A',
+    icon: HeartHandshake,
+    modules: [
+      { name: 'Parent App', desc: 'Keep parents informed and connected.', icon: Smartphone, color: '#E11D48', link: 'https://play.google.com/store/search?q=TrendScore&c=apps', isExternal: true },
+      { name: 'Communication', desc: 'School announcements, SMS and notices.', icon: MessageSquare, color: '#2563EB', link: '/features/communication' },
+      { name: 'Transport', desc: 'Coordinate school transport operations.', icon: Bus, color: '#9333EA', link: '/modules/transport' },
+      { name: 'Boarding & Events', desc: 'Manage boarding workflows, clubs and events.', icon: HomeIcon, color: '#059669', link: '/modules/attendance' },
+    ]
+  },
+  {
+    key: 'academics',
+    name: 'Academic Intelligence',
+    labels: 'Assessment · CBC · Pathways · Analytics',
+    color: '#7C3AED',
+    icon: BrainCircuit,
+    modules: [
+      { name: 'Assessment & Grading', desc: 'Track achievement and CBE rubrics.', icon: ClipboardCheck, color: '#7C3AED', link: '/features/assessment' },
+      { name: 'CBC / CBE Pathways', desc: 'Support junior & senior school guidance.', icon: Compass, color: '#0284C7', link: '#pathways' },
+      { name: 'School Reports & Analytics', desc: 'Turn data into useful insights and reports.', icon: BarChart3, color: '#0D9488', link: '/features/analytics' },
+      { name: 'AI School Assistant', desc: 'Assist with workflows, learning and support.', icon: Bot, color: '#6366F1', link: '/features/academics' },
+    ]
+  },
+  {
+    key: 'digital',
+    name: 'Digital Campus',
+    labels: 'LMS · Content · Marketplace · AI',
+    color: '#0D9488',
+    icon: Laptop,
+    modules: [
+      { name: 'Digital Campus & LMS', desc: 'Extend learning through digital content.', icon: BookOpen, color: '#8B5CF6', link: '/features/academics' },
+      { name: 'Content Marketplace', desc: 'Create · Teach · Earn educational content.', icon: Store, color: '#DB2777', link: '/features/academics' },
+      { name: 'Integrations', desc: 'M-Pesa, WhatsApp, SMS and biometrics.', icon: Layers, color: '#0284C7', link: '#integrations' },
+      { name: 'Dedicated Portals', desc: 'Admin, Teacher and Learner self-service.', icon: LayoutDashboard, color: '#0D9488', link: '#tour' },
+    ]
+  }
+];
+
 const Home = () => {
+  const [mobileCategory, setMobileCategory] = React.useState('all');
+
   // Animation presets
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
@@ -17,74 +92,6 @@ const Home = () => {
     viewport: { once: true, margin: '-100px' },
     transition: { duration: 0.6 }
   };
-
-  // 8 Core Platform Modules matching slide design
-  const modulesList = [
-    {
-      name: 'Admissions',
-      icon: UserPlus,
-      color: '#0284C7',
-      bgColor: '#F0F9FF',
-      hoverBg: '#E0F2FE',
-      link: '/features/admissions'
-    },
-    {
-      name: 'Assessment',
-      icon: ClipboardCheck,
-      color: '#16A34A',
-      bgColor: '#F0FDF4',
-      hoverBg: '#DCFCE7',
-      link: '/features/assessment'
-    },
-    {
-      name: 'Staff',
-      icon: Users,
-      color: '#7C3AED',
-      bgColor: '#F5F3FF',
-      hoverBg: '#EDE9FE',
-      link: '/features/hr'
-    },
-    {
-      name: 'Fees',
-      icon: Bus,
-      color: '#EA580C',
-      bgColor: '#FFF7ED',
-      hoverBg: '#FFEDD5',
-      link: '/features/finance'
-    },
-    {
-      name: 'Pathways',
-      icon: Route,
-      color: '#0D9488',
-      bgColor: '#F0FDFA',
-      hoverBg: '#CCFBF1',
-      link: '/solutions/senior'
-    },
-    {
-      name: 'Timetable',
-      icon: Calendar,
-      color: '#4F46E5',
-      bgColor: '#EEF2FF',
-      hoverBg: '#E0E7FF',
-      link: '/modules/timetable'
-    },
-    {
-      name: 'Communication',
-      icon: MessageSquare,
-      color: '#E11D48',
-      bgColor: '#FFF1F2',
-      hoverBg: '#FFE4E6',
-      link: '/features/communication'
-    },
-    {
-      name: 'Clock-In',
-      icon: Clock,
-      color: '#D97706',
-      bgColor: '#FFFBEB',
-      hoverBg: '#FEF3C7',
-      link: '/modules/attendance'
-    }
-  ];
 
   const row1Schools = [
     { name: 'MCK Isiolo Highway Academy', logo: 'MH' },
@@ -106,7 +113,7 @@ const Home = () => {
 
   return (
     <div className="home-wrapper">
-      {/* 2. Hero Section - Static, Clean, Clear Single Image */}
+      {/* 2. Hero Section - Refined Split Hero with 4 Audience Cards */}
       <section className="hero-section hero-slider-section" style={{ background: '#FFFFFF' }}>
         <div className="hero-slide-content">
           <motion.div
@@ -115,46 +122,45 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="hero-slide-eyebrow">
-              <span className="badge badge-orange" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Sparkles size={14} /> The Modular School ERP
-              </span>
-            </div>
 
-            <h1 className="hero-title">
+
+            <h1 className="hero-title" style={{ fontSize: 'clamp(2.4rem, 3.8vw, 3.8rem)', lineHeight: 1.12, color: 'var(--color-teal)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: '18px' }}>
               Your Whole School Under One Roof.
             </h1>
 
+            <p className="hero-subtitle" style={{ fontSize: '1.08rem', lineHeight: 1.68, color: '#475569', maxWidth: '540px', marginBottom: '26px' }}>
+              Run your school smarter, without stretching your budget. Trends CORE brings administrators, teachers, staff, parents, learners and transport teams together on one affordable platform — making school management simpler and school-home connections stronger.
+            </p>
+
             <div className="hero-buttons">
-              <Link to="/book-demo" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '1rem', fontWeight: 600 }}>
-                Book Free Demo <ArrowRight size={17} />
-              </Link>
-              <a href="#modules" className="btn btn-secondary hero-secondary-cta" style={{ padding: '13px 24px', fontSize: '1rem' }}>
+              <a
+                href="https://play.google.com/store/search?q=TrendScore&c=apps"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-playstore-btn"
+                id="hero-playstore-cta"
+                title="Download Trends CORE App on Google Play Store"
+              >
+                <svg viewBox="0 0 512 512" width="22" height="22" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <path fill="#4285F4" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
+                  <path fill="#34A853" d="M47 0C34 7.2 24 21.6 24 39.5v433c0 17.9 10 32.3 23 39.5l257-257L47 0z" />
+                  <path fill="#EA4335" d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" />
+                  <path fill="#FBBC04" d="M461.2 232.7L385.4 189l-60.1 45.3 60.1 45.3 75.8-43.7c9.5-5.5 15.8-15.6 15.8-26.6s-6.3-21.1-15.8-26.6z" />
+                </svg>
+                <div className="hero-playstore-text">
+                  <span className="hero-playstore-sub">DOWNLOAD FROM</span>
+                  <span className="hero-playstore-title">Play Store App</span>
+                </div>
+              </a>
+              <a
+                href="#modules"
+                className="btn btn-secondary hero-secondary-cta"
+                style={{ padding: '13px 24px', fontSize: '1rem', height: '52px', display: 'inline-flex', alignItems: 'center' }}
+              >
                 Explore Modules
               </a>
             </div>
 
-            <div
-              style={{
-                display: 'flex',
-                gap: '18px',
-                flexWrap: 'wrap',
-                marginTop: '28px',
-                fontSize: '0.86rem',
-                color: 'var(--color-teal)',
-                fontWeight: 600
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Check size={16} style={{ color: 'var(--color-green)' }} /> 100% CBC & CBE Compliant
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Check size={16} style={{ color: 'var(--color-green)' }} /> Live M-Pesa Fee Sync
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Check size={16} style={{ color: 'var(--color-green)' }} /> 500+ Schools Managed
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -165,147 +171,245 @@ const Home = () => {
           >
             <img
               src="/slider/teacher.png"
-              alt="Teacher using TrendScore School Management Platform"
+              alt="Teacher using Trends CORE School Management Platform"
               className="hero-slide-image"
             />
             <div className="hero-image-fade hero-image-fade-side" />
             <div className="hero-image-fade hero-image-fade-bottom" />
 
+            {/* ── Animated Chat Bubble Notifications (Stacked column, staggered appearance, glance hold, sequential exit, loop) ── */}
             <div className="hero-floating-cards">
-              <div className="hero-floating-card hero-floating-card-1">
-                <span className="hero-floating-icon" style={{ background: 'rgba(249, 115, 22, 0.12)', color: 'var(--color-orange)' }}>
-                  <GraduationCap size={22} />
-                </span>
-                <span>
-                  <strong>CBE Assessments</strong>
-                  <small>Rubric grading in minutes</small>
-                </span>
-              </div>
+              {[
+                { role: 'Parent',    msg: 'School fee received ✓' },
+                { role: 'Teacher',   msg: 'CBE report submitted ✓' },
+                { role: 'Admin',     msg: 'New student admitted ✓' },
+                { role: 'Transport', msg: 'Route A trip started.\nArriving in 10 mins' },
+                { role: 'Student',   msg: 'Assignment marked ✓' },
+              ].map(({ role, msg }, i) => {
+                const totalCycle = 11.5;
+                const inStart = 0.10 + i * 0.65;
+                const inEnd = inStart + 0.35;
+                const outStart = 7.05 + i * 0.55;
+                const outEnd = outStart + 0.40;
 
-              <div className="hero-floating-card hero-floating-card-2">
-                <span className="hero-floating-icon" style={{ background: 'rgba(34, 197, 94, 0.12)', color: '#22c55e' }}>
-                  <Coins size={22} />
-                </span>
-                <span>
-                  <strong>M-Pesa Fee Sync</strong>
-                  <small>Real-time receipts & logs</small>
-                </span>
-              </div>
+                const times = [
+                  0,
+                  inStart / totalCycle,
+                  inEnd / totalCycle,
+                  outStart / totalCycle,
+                  outEnd / totalCycle,
+                  1,
+                ];
 
-              <div className="hero-floating-card hero-floating-card-3">
-                <span className="hero-floating-icon" style={{ background: 'rgba(15, 76, 92, 0.12)', color: 'var(--color-teal)' }}>
-                  <Users size={22} />
-                </span>
-                <span>
-                  <strong>Connected Portals</strong>
-                  <small>Teachers, parents & learners</small>
-                </span>
-              </div>
+                return (
+                  <motion.div
+                    key={role}
+                    className="hero-bubble"
+                    initial={{ opacity: 0, x: 20, scale: 0.94 }}
+                    animate={{
+                      opacity: [0, 0, 1, 1, 0, 0],
+                      x:       [20, 20, 0, 0, -8, 20],
+                      scale:   [0.94, 0.94, 1, 1, 0.96, 0.94],
+                    }}
+                    transition={{
+                      duration: totalCycle,
+                      times,
+                      ease: 'easeInOut',
+                      repeat: Infinity,
+                    }}
+                  >
+                    <span className="hero-bubble-tail" aria-hidden="true" />
+                    <span className="hero-toast-check"><Check size={12} strokeWidth={3.5} /></span>
+                    <div className="hero-toast-body">
+                      <span className="hero-toast-role">{role}</span>
+                      <span className="hero-toast-msg">{msg}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Centered Intro Statement Section */}
-      <section className="section intro-statement-section" style={{ backgroundColor: '#F8FAFC', padding: '90px 0', borderBottom: '1px solid #E2E8F0' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '840px' }}>
-          <motion.div {...fadeUp}>
-            <span className="badge badge-teal" style={{ marginBottom: '18px' }}>
-              Kenya's Leading School ERP
-            </span>
-            <h2 style={{
-              fontSize: 'clamp(2rem, 3.5vw, 2.85rem)',
-              fontWeight: 800,
-              color: '#0F172A',
-              letterSpacing: '-0.025em',
-              lineHeight: 1.25,
-              marginBottom: '22px'
-            }}>
-              Meet The Most Intuitive School Management System
-            </h2>
-            <p style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.8,
-              color: '#475569',
-              margin: '0 auto',
-              maxWidth: '780px'
-            }}>
-              TrendScore is Kenya’s all-in-one modular school management platform built to streamline every aspect of your institution. From CBC and CBE assessment rubrics to automated M-Pesa fee collection, admissions, and timetabling, every department works together in real time. Empower your teachers, engage parents, and give school directors complete operational clarity without the paperwork chaos.
-            </p>
-          </motion.div>
+      {/* ── VALUE PROPOSITION BOXES ── */}
+      <section className="value-boxes-section">
+        <div className="container">
+          <div className="value-boxes-grid">
+            <div className="value-box">
+              <div className="value-box-icon" style={{ backgroundColor: '#EFF6FF', color: '#2563EB' }}>
+                <Layers size={24} strokeWidth={2} aria-hidden="true" />
+              </div>
+              <div className="value-box-content">
+                <h3>Pay Modules Used</h3>
+                <p>Only pay for the modules your school actually uses. Scale up or down anytime — zero waste.</p>
+              </div>
+            </div>
+            <div className="value-box">
+              <div className="value-box-icon" style={{ backgroundColor: '#FFF7ED', color: '#EA580C' }}>
+                <Smartphone size={24} strokeWidth={2} aria-hidden="true" />
+              </div>
+              <div className="value-box-content">
+                <h3>Custom Branded Apps</h3>
+                <p>Get your own branded mobile app with your school's logo, colours and identity on the Play Store.</p>
+              </div>
+            </div>
+            <div className="value-box">
+              <div className="value-box-icon" style={{ backgroundColor: '#ECFDF5', color: '#059669' }}>
+                <Zap size={24} strokeWidth={2} aria-hidden="true" />
+              </div>
+              <div className="value-box-content">
+                <h3>Offline Version</h3>
+                <p>Keep working even without internet. Data syncs automatically when connectivity is restored.</p>
+              </div>
+            </div>
+            <div className="value-box">
+              <div className="value-box-icon" style={{ backgroundColor: '#F5F3FF', color: '#7C3AED' }}>
+                <ShieldCheck size={24} strokeWidth={2} aria-hidden="true" />
+              </div>
+              <div className="value-box-content">
+                <h3>On Premise Solution</h3>
+                <p>Host TrendScore on your own server for full data control, privacy, and independence.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 8 Modules Platform Section (Directly Below Hero - 2 Column Layout with Fancy Module Pills) */}
-      <section className="modules-overview-section" id="modules">
-        {/* Subtle top-right organic sky-blue corner shape matching slide mockup */}
-        <div className="modules-corner-top-decor" aria-hidden="true" />
+      {/* ── THE TRENDS CORE ECOSYSTEM ── */}
+      <section className="eco-modules-section" id="modules">
+        <div className="container">
 
-        <div className="container modules-container">
-          <div className="modules-overview-grid">
-            {/* Left Column: Pill Badge, Kicker, Heading, and Description */}
-            <motion.div className="modules-text-col" {...fadeUp}>
-              <div className="modules-badge-pill">
-                8 MODULES | PLATFORM
-              </div>
+          {/* Section Header */}
+          <div className="section-header eco-section-header">
+            <h2>Experience a full school ecosystem.</h2>
+            <p>Trends CORE, a complete school operating system, all processes are recorded in one software.</p>
+          </div>
 
-              <div className="modules-accent-bar" />
-
-              <div className="modules-kicker">
-                WHAT IS TRENDSCORE
-              </div>
-
-              <h2 className="modules-heading">
-                One Learner Record.<br />
-                Every Workflow <span className="modules-highlight">Connected.</span>
-              </h2>
-
-              <p className="modules-desc">
-                Kenyan schools run on paper registers and disconnected spreadsheets. TrendScore ties admissions, staff, timetable, attendance, assessment, pathways, communication and fees into a single platform – so information flows instead of getting lost.
-              </p>
-
-              <div className="modules-cta-row">
-                <Link to="/book-demo" className="btn btn-primary" style={{ padding: '12px 26px', fontSize: '0.98rem' }}>
-                  Book Free Demo <ArrowRight size={16} />
-                </Link>
-                <Link to="/pricing" className="btn btn-secondary" style={{ padding: '12px 24px', fontSize: '0.98rem' }}>
-                  See Pricing Plans
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Right Column: 8 Colorful Rounded Module Pills with Circular Icons */}
-            <motion.div
-              className="modules-list-col"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6 }}
+          {/* Mobile Category Filter Tabs (visible on mobile/tablet) */}
+          <div className="eco-mobile-tabs" role="tablist" aria-label="Filter modules by category">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mobileCategory === 'all'}
+              className={`eco-mobile-tab ${mobileCategory === 'all' ? 'is-active' : ''}`}
+              onClick={() => setMobileCategory('all')}
             >
-              {modulesList.map((mod) => {
-                const IconComponent = mod.icon;
+              <span>All Categories</span>
+            </button>
+            {moduleCategories.map((cat) => (
+              <button
+                key={cat.key}
+                type="button"
+                role="tab"
+                aria-selected={mobileCategory === cat.key}
+                className={`eco-mobile-tab ${mobileCategory === cat.key ? 'is-active' : ''}`}
+                onClick={() => setMobileCategory(cat.key)}
+              >
+                <span className="eco-mobile-tab-dot" style={{ backgroundColor: cat.color }} aria-hidden="true" />
+                <span>{cat.name}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Unified Ecosystem Table with Category Cards as Column Headers */}
+          <div className="eco-table-wrap" role="region" aria-label="Trends CORE Modules Table">
+            <div className="eco-table-columns">
+              {moduleCategories.map((cat) => {
+                const isHiddenOnMobile = mobileCategory !== 'all' && mobileCategory !== cat.key;
                 return (
-                  <Link
-                    to={mod.link}
-                    key={mod.name}
-                    className="module-pill-item"
-                    style={{
-                      '--mod-color': mod.color,
-                      '--mod-bg': mod.bgColor,
-                      '--mod-hover-bg': mod.hoverBg
-                    }}
-                  >
-                    <div className="module-pill-icon-wrap" style={{ backgroundColor: mod.color }}>
-                      <IconComponent size={22} color="#ffffff" strokeWidth={2.3} />
+                  <div key={cat.key} className={`eco-table-column ${isHiddenOnMobile ? 'eco-mobile-hidden' : ''}`}>
+                    {/* Category Card Header - Colored Background, No Icon */}
+                    <div className="eco-table-col-header" style={{ backgroundColor: cat.color }}>
+                      <div className="eco-cat-text">
+                        <div className="eco-cat-title">{cat.name}</div>
+                        <p className="eco-cat-labels">{cat.labels}</p>
+                      </div>
                     </div>
-                    <span className="module-pill-title">{mod.name}</span>
-                    <span className="module-pill-arrow">
-                      <ChevronRight size={18} />
-                    </span>
-                  </Link>
+
+                    {/* Column Module Cells */}
+                    <div className="eco-col-cells">
+                      {cat.modules.map((mod) => {
+                        const ModIcon = mod.icon;
+                        const isAnchor = mod.link.startsWith('#');
+                        const isExternal = mod.isExternal;
+
+                        const cellInner = (
+                          <>
+                            <div className="eco-table-cell-left">
+                              <div
+                                className="eco-table-icon-circle"
+                                style={{ backgroundColor: mod.color, color: '#ffffff' }}
+                              >
+                                <ModIcon size={18} strokeWidth={2.2} aria-hidden="true" />
+                              </div>
+                              <div className="eco-table-text">
+                                <span className="eco-table-name">{mod.name}</span>
+                                <span className="eco-table-desc">{mod.desc}</span>
+                              </div>
+                            </div>
+                            <ChevronRight size={15} strokeWidth={2} className="eco-table-chevron" aria-hidden="true" />
+                          </>
+                        );
+
+                        if (isExternal) {
+                          return (
+                            <a
+                              key={mod.name}
+                              href={mod.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="eco-table-cell"
+                              title={`${mod.name} — ${mod.desc}`}
+                            >
+                              {cellInner}
+                            </a>
+                          );
+                        }
+
+                        if (isAnchor) {
+                          return (
+                            <a
+                              key={mod.name}
+                              href={mod.link}
+                              className="eco-table-cell"
+                              title={`${mod.name} — ${mod.desc}`}
+                            >
+                              {cellInner}
+                            </a>
+                          );
+                        }
+
+                        return (
+                          <Link
+                            key={mod.name}
+                            to={mod.link}
+                            className="eco-table-cell"
+                            title={`${mod.name} — ${mod.desc}`}
+                          >
+                            {cellInner}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
-            </motion.div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="eco-bottom-bar">
+            <Link to="/features/academics" className="eco-explore-btn">
+              <LayoutGrid size={15} strokeWidth={2.2} aria-hidden="true" />
+              <span>Explore All Modules</span>
+              <ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
+            </Link>
+
+            <div className="eco-brand-statement">
+              <span className="eco-brand-line" aria-hidden="true" />
+              <span><strong>Trends CORE</strong> — More than a system. It's your school's rhythm.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -360,8 +464,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 8. Senior School Pathways (New Interactive Redesign) */}
-      <SeniorSchoolPathways />
+      {/* 8. Senior School Pathways (Hidden) */}
+      {/* <SeniorSchoolPathways /> */}
+
       {/* 9. Connected Portals */}
       <section className="section">
         <div className="container">

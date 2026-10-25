@@ -320,9 +320,41 @@
   gap: 8px;
 }
 
-.btn-nav-demo {
-  padding: 10px 20px;
-  font-size: 0.9rem;
+/* WhatsApp Brand CTA Button */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #ffffff !important;
+  border: 1px solid #20bd5a;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-headings);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1faa51;
+  color: #ffffff !important;
+  border-color: #1faa51;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+}
+
+.btn-nav-whatsapp {
+  padding: 10px 22px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  border-radius: 999px;
+  gap: 9px;
+  letter-spacing: -0.01em;
+}
+
+.btn-nav-whatsapp svg {
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
 }
 
 /* Mobile Toggle */
